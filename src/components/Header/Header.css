@@ -1,8 +1,8 @@
 
 header{
-    background-color: #0057FF;
-    height: 100px;
-    width: calc(100%-30px);
+    background-color: var(--blue);
+    height: 40vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,16 +12,19 @@ header{
 
 .icon-menu{
     background-image: url('../../assets/icons/icon-menu.svg');
-    width: 42px;
-    height: 40px;
+    width: 20%;
+    height: 40%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .logo-motor-fortune{
     background-image: url('../../assets/icons/logo-motor-fortune.svg');
-    width: 140px;
-    height: 70px;
-    background-position: 0px -12px ;
-    background-size: cover;
+    width: 60%;
+    height: 85%;
+    background-position-y:-5px ;
+    background-size: contain;
     background-repeat: no-repeat;
 
 }

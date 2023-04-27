@@ -14,11 +14,13 @@
     width: calc(100% - 24px);
     display: inline;
     padding-left: 10px;
-    height: 25px;
+    min-height: 25px;
+    height: 4vh;
+    font-size: 2.4vh;
 }
 .container-searcher_input:focus-visible{
     outline: 0;
-    outline-color: #0057FF;
+    outline-color: var(--blue);
     outline-style: solid;
     outline-width: 1px;
 }

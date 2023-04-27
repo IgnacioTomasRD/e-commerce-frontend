@@ -15,7 +15,8 @@ function Footer(){
             </section>
             <div className = "line"/>
             <section className="container-footer--copyright"> 
-                <p className="container-footer--copyright__name"><span className="copyright-logo"/></p>
+                <div className="copyright-logo"/>
+                <p className="container-footer--copyright__name">Motor Fortuna Group</p>
             </section>
         </footer>
     )

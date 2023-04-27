@@ -1,0 +1,89 @@
+
+.container-post{
+    padding: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.name-product{
+    font-weight: 500;
+    font-size: 3.4rem;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.arrow-circle-left{
+    background-color: transparent;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 12px;
+    top: 12px;
+    border: none;
+    border-radius: 50%;
+    background-image: url('src/assets/icons/arrow-circle-left.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: flex-end;
+}
+
+.imagen-container{
+    min-width: 296px;
+    min-height: 210px;
+    max-height: 500px;
+    box-shadow: 2px 4px 15px 2px rgba(24, 97, 238, 0.19);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-self: center;
+}
+.imagen-container img{
+    width: 140%;
+    height: 100%;
+}
+.container-specs{
+    margin-top: 10px;
+}
+
+
+.container-specs h3{
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+
+.container-item .title-item h3{
+    margin: 0;
+    margin-top: 15px;
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 400;
+    display: inline-block;
+    text-decoration: underline;
+}
+ .up-arrow{
+    width: 24px;
+    height: 24px;
+    background-image: url('src/assets/icons/down-arrow.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.container-item .description h3{
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.033);
+}
+.container-item .description{
+    margin-top: 5px;
+}

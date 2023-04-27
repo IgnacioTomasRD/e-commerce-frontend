@@ -28,7 +28,7 @@
 .container-labels{
     width: calc(100%-30px);
     height: auto;
-    background-color: #F1EDED;
+    background-color: var(--soft-gray);
     padding:  2px 10px;
     border-radius: 5px;
 }

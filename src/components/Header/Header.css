@@ -1,0 +1,27 @@
+
+header{
+    background-color: #0057FF;
+    height: 100px;
+    width: calc(100%-30px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.icon-menu{
+    background-image: url('../../assets/icons/icon-menu.svg');
+    width: 42px;
+    height: 40px;
+}
+
+.logo-motor-fortune{
+    background-image: url('../../assets/icons/logo-motor-fortune.svg');
+    width: 140px;
+    height: 70px;
+    background-position: 0px -12px ;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}

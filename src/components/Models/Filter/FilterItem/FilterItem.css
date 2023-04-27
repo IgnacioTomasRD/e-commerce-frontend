@@ -1,0 +1,25 @@
+.filter-name{
+    margin: 0 3px;
+    text-decoration: underline;
+    display: flex;
+    font-size: 1.8rem;
+    align-items: center;
+}
+
+.filter-item-conteiner ul{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 1px 0px;
+    width: fit-content;
+}
+.filter-item-conteiner li{
+    margin: 5px;
+    width: fit-content;
+}
+
+.filter-item-conteiner{
+    display: flex;
+    flex-wrap: wrap;
+}

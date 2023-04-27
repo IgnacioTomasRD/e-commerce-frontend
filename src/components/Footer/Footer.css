@@ -1,8 +1,8 @@
 .container-footer{
-    height: 50vw;
+    height: 45vw;
     width: 100%;
     background-color: var(--blue);
-    padding: 12px;
+    padding: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,14 +21,15 @@
     height: 100%;
     width: 50%;
     background-image: url('src/assets/icons/logo-motor-fortune.svg');
-    background-position-y:15px;
+
     background-repeat: no-repeat;
     background-size: contain;
 } 
 .container-footer--info__visit-us{
-    width: calc(50%-10px);
+    width: 50%;
     padding-left: 10px;
-    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .container-footer--info__visit-us h2{
@@ -42,38 +43,37 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: px
 }
 .logo-twitter{
     background-image: url('src/assets/icons/twitter.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 14vw;
-    height: 14vw;
+    width: 12vw;
+    height: 12vw;
 }
 .logo-facebook{
     background-image: url('src/assets/icons/facebook.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 15vw;
-    height: 15vw;
+    width: 12vw;
+    height: 12vw;
 }
 .logo-instagram{
     background-image: url('src/assets/icons/instagram.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 15vw;
-    height: 15vw;
+    width: 12vw;
+    height: 12vw;
 }
-.line{
+.line-footer{
     height: 2px;
     width: 75%;
     background-color: black;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 4px;
     margin-bottom: 0px;
 }
 .container-footer--copyright__name{

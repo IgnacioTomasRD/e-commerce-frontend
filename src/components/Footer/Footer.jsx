@@ -13,7 +13,7 @@ function Footer(){
                 </div>
                 </article>
             </section>
-            <div className = "line"/>
+            <div className = "line-footer"/>
             <section className="container-footer--copyright"> 
                 <div className="copyright-logo"/>
                 <p className="container-footer--copyright__name">Motor Fortuna Group</p>

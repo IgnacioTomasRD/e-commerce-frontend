@@ -8,6 +8,7 @@ header{
     justify-content: space-between;
     padding-left: 15px;
     padding-right: 15px;
+
 }
 
 .icon-menu{
@@ -17,6 +18,21 @@ header{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.icon-close{
+    background-image: url('../../assets/icons/times-close.svg');
+    width: 20%;
+    height: 40%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
 }
 
 .logo-motor-fortune{

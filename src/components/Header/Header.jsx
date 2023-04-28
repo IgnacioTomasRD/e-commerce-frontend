@@ -1,10 +1,15 @@
 import './Header.css'
 
- function Header(){
+ function Header({openNavBarMobile,setOpenNavBarMobile}){
+    
+    const openNavBar = () =>{
+        setOpenNavBarMobile(!openNavBarMobile);
+    }
+    
     return(
         <>
-            <header>
-                <span className="icon-menu"></span>
+            <header> 
+                <button onClick={openNavBar} className={openNavBarMobile?"icon-close":"icon-menu"}/>
                 <span className="logo-motor-fortune"></span>
             </header>
         </>

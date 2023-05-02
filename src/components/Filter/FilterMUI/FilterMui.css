@@ -25,6 +25,13 @@
     background-position-y:2px ;
 }
 
+.box-filter_button-up-arrow{
+    width: 24px;
+    height: 24px;
+    background-image: url('../../../assets/icons/down-arrow.svg');
+    transform: rotate(180deg);
+}
+
 .container-labels{
     width: calc(100%-30px);
     height: auto;

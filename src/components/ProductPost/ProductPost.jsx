@@ -1,7 +1,7 @@
-import "./Product.css"
+import "./ProductPost.css"
 
 
-function Product({name}){
+function ProductPost({name}){
 
     return (
         <div className="container-product">
@@ -11,4 +11,4 @@ function Product({name}){
     )
 }
 
-export default Product;
+export default ProductPost;

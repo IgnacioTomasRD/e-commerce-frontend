@@ -2,9 +2,9 @@
 import { useState } from "react"
 import Footer from "./components/Footer/Footer"
 import Header from "./components/Header/Header"
-import Models from "./components/Models/Models"
 import NavBar from "./components/NavBar/NavBar"
 import Post from "./components/Post/Post"
+import PagePosts from "./pages/PagePosts/PagePosts"
 
 function App() {
   const [openNavBarMobile,setOpenNavBarMobile] = useState(false);
@@ -13,8 +13,8 @@ function App() {
   <>
     <Header  openNavBarMobile = {openNavBarMobile} setOpenNavBarMobile={setOpenNavBarMobile} />
     <NavBar openNavBarMobile = {openNavBarMobile} setOpenNavBarMobile={setOpenNavBarMobile}/>
-    <Post />
-    {/*<Footer /> */}
+    <PagePosts/>
+    <Footer />
   </>
   )
   // <Home>

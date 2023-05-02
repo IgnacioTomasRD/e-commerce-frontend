@@ -17,15 +17,13 @@ function NavBar({openNavBarMobile,setOpenNavBarMobile}){
     <Drawer 
           variant="persistent"
           open={openNavBarMobile}
-          hideBackdrop= {true}
           onClose={() => setOpenNavBarMobile(!openNavBarMobile)}
           ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-              hideBackdrop: true
+              keepMounted: true, // Better open performance on mobile
             }}
           sx={{
             display: { xs: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box',width:1},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box',width:0.8},
         }}
     >
         <DrawerHeader>

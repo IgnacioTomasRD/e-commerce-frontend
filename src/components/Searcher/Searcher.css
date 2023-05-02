@@ -27,7 +27,7 @@
 
 .container-searcher_button{
     width: 24px;
-    background-image: url('../../../assets/icons/logo-search.svg');
+    background-image: url('src/assets/icons/logo-search.svg');
     height: 24px;
     background-position: center;
     background-repeat: no-repeat;

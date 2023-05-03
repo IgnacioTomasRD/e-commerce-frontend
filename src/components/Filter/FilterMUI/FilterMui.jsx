@@ -22,17 +22,11 @@ const filtersDefault = [
     ],
   },
 ];
-const brandsSelectedDefault = [
-  {
-    value: "BMW",
-    selected: true,
-  },
-];
 
 function FilterMui() {
   const [expanded, setExpanded] = useState(false);
   const [filters, setFilters] = useState(filtersDefault);
-  const [brandsSelected, setBrandsSelected] = useState(brandsSelectedDefault);
+  const [brandsSelected, setBrandsSelected] = useState([]);
 
   const selectBrand= (byFilter,brand) => {
     const indexBrandSelected = byFilter.brands.indexOf(brand);
@@ -44,9 +38,28 @@ function FilterMui() {
     setFilters(newFilters);
     
     brand.selected = true;
-    const newBrandsSelected = [...brandsSelected,brand];
+    const newBrand = {byFilter, ...brand}
+    const newBrandsSelected = [...brandsSelected,newBrand];
     setBrandsSelected(newBrandsSelected);
   }
+
+  const deselectBrand = (brand) => {
+    brand.selected = false;
+    const indexBrandOnSelectedBrands = brandsSelected.indexOf(brand);
+    const newBrandsSelected = [...brandsSelected];
+    newBrandsSelected.splice(indexBrandOnSelectedBrands,1);
+    setBrandsSelected(newBrandsSelected);
+    const byFilter = brand.byFilter;
+
+    const newFilters = [...filters];
+    const filterIndex = filters.indexOf(byFilter);
+    const newFilter = {...byFilter}
+
+    newFilter.brands.push(brand);
+    newFilters[filterIndex] = newFilter;
+    setFilters(newFilters);
+  }
+
 
   return (
     <>
@@ -75,7 +88,7 @@ function FilterMui() {
         {brandsSelected.map((brandSelected, index) => {
           return (
             <li key={brandSelected.value + index}>
-              <Brand brand={brandSelected} />
+              <Brand brand={brandSelected} deselectBrand = {deselectBrand} />
             </li>
           );
         })}

@@ -22,4 +22,11 @@
     height: 20px;
     background-image: url('src/assets/icons/plus-circle.svg');
 }
-
+.logo-brand-minus{
+    width: 20px;
+    height: 20px;
+    background-image: url('src/assets/icons/minus-circle.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

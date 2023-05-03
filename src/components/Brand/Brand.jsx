@@ -1,10 +1,10 @@
 import "./Brand.css"
 
-function Brand({brand,selectBrand,byFilter}){
+function Brand({brand,selectBrand,byFilter,deselectBrand}){
     return(
-        <button className = "container-brand" onClick={() => selectBrand(byFilter,brand)}>
+        <button className = "container-brand" onClick={() => brand.selected ? deselectBrand(brand): selectBrand(byFilter,brand)}>
             <p className = "name-brand">{brand.value}</p>
-            <span className = "logo-brand-plus"/>
+            <span className = {brand.selected ?"logo-brand-minus" :"logo-brand-plus"}/>
         </button>
     )
 }

@@ -4,7 +4,9 @@ function Footer(){
     return(
         <footer className = "container-footer">
             <section className = "container-footer--info">
-                <div className = "container-footer--info__logo"></div>
+                <div className="container-footer--info_logo">
+                    <div className = "container-footer--info__logo_MF"></div>
+                </div>
                 <article className = "container-footer--info__visit-us"><h2>visit us:</h2> 
                 <div className="container-icons">
                     <div className="logo-twitter"/>

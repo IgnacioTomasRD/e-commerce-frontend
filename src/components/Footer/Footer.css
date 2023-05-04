@@ -1,72 +1,82 @@
 .container-footer{
-    height: 45vw;
+    height: 144px;
     width: 100%;
     background-color: var(--blue);
     padding: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-self: end;
+
 }
 
 .container-footer--info{
     width: 100%;
     height: 70%;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
- .container-footer--info__logo{
-    min-width: 92px;
-    min-height: 54px;
-    height: 100%;
+.container-footer--info_logo{
     width: 50%;
-    background-image: url('src/assets/icons/logo-motor-fortune.svg');
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+} 
 
+.container-footer--info__logo_MF{
+    width: 170px;
+    height: 100%;
+    background-image: url('src/assets/icons/logo-motor-fortune.svg');
     background-repeat: no-repeat;
     background-size: contain;
 } 
 .container-footer--info__visit-us{
     width: 50%;
+    height: 105px;
     padding-left: 10px;
     display: flex;
     flex-wrap: wrap;
+   align-items: center;
 }
 
 .container-footer--info__visit-us h2{
     margin: 0;
     padding: 0;
-    font-size: 8vw;
+    font-size: 2.5rem;
     text-decoration: underline;
-
+    line-height: 40px;
 }
 .container-icons{
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .logo-twitter{
     background-image: url('src/assets/icons/twitter.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 12vw;
-    height: 12vw;
+    width: 50px;
+    height: 50px;
 }
 .logo-facebook{
     background-image: url('src/assets/icons/facebook.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 12vw;
-    height: 12vw;
+    width: 50px;
+    height: 50px;
 }
 .logo-instagram{
     background-image: url('src/assets/icons/instagram.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 12vw;
-    height: 12vw;
+    width: 50px;
+    height: 50px;
 }
 .line-footer{
     height: 2px;

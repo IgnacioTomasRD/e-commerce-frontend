@@ -5,6 +5,7 @@ import Header from "./components/Header/Header"
 import NavBar from "./components/NavBar/NavBar"
 import Post from "./components/Post/Post"
 import PagePosts from "./pages/PagePosts/PagePosts"
+import PageHome from './pages/PageHome/PageHome';
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
     <BrowserRouter>
         <Routes>
             <Route path= "/posts" element={<PagePosts/>} />
+            <Route path= "/" element={<PageHome/>} />
         </Routes>
     </BrowserRouter>
 

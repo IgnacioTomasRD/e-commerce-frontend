@@ -24,8 +24,9 @@ body{
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  align-content: start;
   width: 100vw;
+  align-content: flex-start;
+
 }
 
 

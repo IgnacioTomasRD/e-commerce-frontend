@@ -43,5 +43,7 @@ header{
     background-position-y:-15px ;
     background-size: cover;
     background-repeat: no-repeat;
-
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }

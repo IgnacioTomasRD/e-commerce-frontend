@@ -28,7 +28,7 @@ function NavBar({openNavBarMobile,setOpenNavBarMobile}){
     >
         <DrawerHeader>
             <IconButton  onClick={() => setOpenNavBarMobile(false)}>
-                <ChevronLeftIcon sx = {{ fontSize: '10vw' }} />
+                <ChevronLeftIcon sx = {{ fontSize: '40px' }} />
               </IconButton>
         </DrawerHeader>
         <Divider />

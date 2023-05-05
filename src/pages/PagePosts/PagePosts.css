@@ -3,7 +3,7 @@
     font-weight: 400;
     text-decoration: underline;
     letter-spacing: 0.01rem;
-    font-size: 14vw;
+    font-size: 5rem;
     margin-bottom: 10px;
     margin-top: 15px;
 }
@@ -20,8 +20,8 @@
 .shopping-cart{
     background-color: transparent;
     position: sticky;
-    width: 18vw;
-    height: 18vw;
+    width: 75px;
+    height: 75px;
     bottom: 10px;
     border: none;
     border-radius: 50%;

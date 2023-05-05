@@ -1,6 +1,8 @@
 .container-products{
     padding: 0;
     width: 100%;
+    max-width: 900px;
+    margin: auto;
     display: flex;
     gap: 20px;
     flex-direction: column;

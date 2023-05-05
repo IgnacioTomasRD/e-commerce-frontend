@@ -1,9 +1,67 @@
 .title-home-page{
-    padding: 40px 0px 20px;
+    padding: 35px 0px 20px;
     display: block;
     justify-content: center;
     font-size:2.5rem;
     width: 100%;
     line-height: 2.5rem;
     text-align: center;
+}
+
+.logo-ford{
+    width: 100px;
+    height: 100px;
+    background-image: url('src/assets/logos/logo-ford.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.logo-audi{
+    width: 100px;
+    height: 100px;
+    background-image: url('src/assets/logos/logo-audi.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.logo-mercedes-benz{
+    width: 100px;
+    height: 100px;
+    background-image: url('src/assets/logos/logo-mercedes-benz.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.logo-jeep{
+    width: 100px;
+    height: 100px;
+    background-image: url('src/assets/logos/logo-jeep.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.logo-bmw{
+    width: 100px;
+    height: 100px;
+    background-image: url('src/assets/logos/logo-bmw.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.line-fw{
+    margin: 10px 0px;
+    height: 1px;
+    width: 85%;
+    max-width: 700px;
+    background-color: black;
+}
+
+.logo-mf{
+    width: 50%;
+    height:120px;
+    background-image: url('src/assets/icons/logo-motor-fortune.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }

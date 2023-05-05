@@ -1,13 +1,16 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination,Autoplay, A11y } from "swiper";
+import { Navigation , Pagination,Autoplay } from "swiper";
 import "./Slider.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import 'swiper/css/autoplay';
+
 
 function Slider() {
   return (
     <Swiper
+      className="swiper-hero"
       spaceBetween={0}
       slidesPerView={1}
       autoplay={{
@@ -15,16 +18,19 @@ function Slider() {
       }}
       modules={[Autoplay,Navigation, Pagination]}
       navigation
-      pagination={{ clickable: true }}
+      pagination={{ 
+        clickable: true,
+        dynamicBullets: true
+         }}
     >
       <SwiperSlide>
-        <img src="src\assets\imgs\mb.jpg" alt=""></img>
+        <img className="slider-home-img" src="src\assets\imgs\mb.jpg" alt=""></img>
       </SwiperSlide>
       <SwiperSlide>
-        <img src="src\assets\imgs\mb.jpg" alt=""></img>
+        <img className="slider-home-img" src="src\assets\imgs\sotck.jpg" alt=""></img>
       </SwiperSlide>
       <SwiperSlide>
-        <img src="src\assets\imgs\mb.jpg" alt=""></img>
+        <img className="slider-home-img" src="src\assets\imgs\mb.jpg" alt=""></img>
       </SwiperSlide>
     </Swiper>
   );

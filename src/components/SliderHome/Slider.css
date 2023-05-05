@@ -1,0 +1,15 @@
+:root{
+    --swiper-theme-color: #0057FF !important; 
+    --swiper-navigation-size: 35px !important; 
+}
+
+.swiper-hero {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+.slider-home-img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

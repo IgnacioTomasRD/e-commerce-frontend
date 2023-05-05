@@ -1,0 +1,14 @@
+:root{
+    --swiper-theme-color: #0057FF !important; 
+    --swiper-navigation-size: 35px !important; 
+}
+
+.swiper-post{
+    width: 70%;
+    height: 250px;;
+}
+.slider-post-img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+} 

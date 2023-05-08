@@ -1,4 +1,5 @@
 
+import { Stack } from "@mui/material";
 import ProductPost from "../ProductPost/ProductPost";
 import "./ProductsListPost.css"
 
@@ -11,9 +12,9 @@ function ProductsListPost(){
         ]
 
     return (
-        <ul className="container-products">
-           { products.map((product,index) => <li key={product.name + (++index)}><ProductPost name = {product.name}/></li>)}
-        </ul>
+        <Stack spacing={2.5}>
+           { products.map((product,index) => <ProductPost key ={product.name + (++index)} name={product.name}/>)}
+        </Stack>
     )
 }
 

@@ -12,6 +12,7 @@
     width: calc(100% - 7.5vw);
     height: auto;
     min-width: 296px;
+    max-width: 1100px;
     margin: auto;
     position: relative;
     display: flex;

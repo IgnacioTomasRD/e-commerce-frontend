@@ -23,7 +23,7 @@ function NavBar({openNavBarMobile,setOpenNavBarMobile}){
             }}
           sx={{
             display: { xs: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box',width:0.8},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box',width:0.8,maxWidth:'500px'},
         }}
     >
         <DrawerHeader>

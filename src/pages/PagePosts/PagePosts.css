@@ -20,9 +20,8 @@
 }
 .shopping-cart{
     background-color: transparent;
-    position: sticky;
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
     bottom: 10px;
     border: none;
     border-radius: 50%;

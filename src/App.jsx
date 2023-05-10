@@ -4,6 +4,7 @@ import PageHome from './pages/PageHome/PageHome';
 import PagePost from './pages/PagePost/PagePost';
 import PageTransaction from './pages/PageTransaction/PageTransaction';
 import PageLogin from './pages/PageLogin/PageLogin';
+import PageRegister from './pages/PageRegister/PageRegister';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
             <Route path= "/post" element={<PagePost/>} />
             <Route path= "/transaction" element={<PageTransaction/>} />
             <Route path= "/login" element={<PageLogin/>} />
+            <Route path= "/register" element={<PageRegister/>} />
         </Routes>
     </BrowserRouter>
 

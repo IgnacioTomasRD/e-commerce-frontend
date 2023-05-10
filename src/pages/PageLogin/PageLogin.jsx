@@ -41,7 +41,7 @@ function PageLogin() {
           margin: "15px",
         }}
       >
-        <Typography variant="h3" sx={{ marginBottom: "10px" }}>
+        <Typography variant="h3" sx={{ fontWeight: "bold" }}>
           Sign in
         </Typography>
         <form onSubmit={formik.handleSubmit}>
@@ -57,9 +57,12 @@ function PageLogin() {
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
             sx={{
-                '& .MuiInputBase-root':{
-                    fontSize:'12px'
-                }
+              "& .MuiInputBase-root": {
+                fontSize: "1.2rem",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "1.2rem",
+              },
             }}
           />
           <TextField
@@ -67,9 +70,12 @@ function PageLogin() {
             id="password"
             name="password"
             sx={{
-                '& .MuiInputBase-root':{
-                    fontSize:'12px'
-                }
+              "& .MuiInputBase-root": {
+                fontSize: "12px",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+              },
             }}
             label="Password"
             type="password"
@@ -80,7 +86,7 @@ function PageLogin() {
             helperText={formik.touched.password && formik.errors.password}
           />
           <Button
-            sx={{ marginTop: "10px" }}
+            sx={{ backgroundColor:"#0057FF",marginTop: "10px", fontSize: '1rem' }}
             color="primary"
             variant="contained"
             fullWidth
@@ -89,6 +95,17 @@ function PageLogin() {
             LOG IN
           </Button>
         </form>
+        <Typography
+          variant="h4"
+          sx={{ marginTop: "15px", textAlign: "center", fontWeight: "bold" }}
+        >
+          Dont you have an account?
+        </Typography>
+        <Stack sx ={{marginTop:'10px'}}>
+          <Button variant="outlined" sx={{ margin: "auto", color: "#0057FF",fontSize:'1.1rem' }}>
+            SIGN UP
+          </Button>
+        </Stack>
       </Paper>
       <Stack width={1} alignSelf={"end"}>
         <Footer />

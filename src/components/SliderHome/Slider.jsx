@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation , Pagination,Autoplay } from "swiper";
-import "./Slider.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import 'swiper/css/autoplay';
+import "./Slider.css";
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
 
 function Slider() {
@@ -24,14 +25,15 @@ function Slider() {
          }}
     >
       <SwiperSlide>
-        <img className="slider-home-img" src="src\assets\imgs\mb.jpg" alt=""></img>
+        <img className="slider-home-img" src="src\assets\imgs\bugatti.jpg" alt=""></img>
       </SwiperSlide>
       <SwiperSlide>
-        <img className="slider-home-img" src="src\assets\imgs\sotck.jpg" alt=""></img>
+        <img className="slider-home-img" src="src\assets\imgs\coches-bmw.jpeg" alt=""></img>
       </SwiperSlide>
       <SwiperSlide>
-        <img className="slider-home-img" src="src\assets\imgs\mb.jpg" alt=""></img>
+        <img className="slider-home-img" src="src\assets\imgs\mcclaren.jpg" alt=""></img>
       </SwiperSlide>
+      <KeyboardDoubleArrowDownIcon className='flecha' fontSize="100rem"/>
     </Swiper>
   );
 }

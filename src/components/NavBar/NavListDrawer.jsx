@@ -2,7 +2,6 @@ import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemTex
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import InfoIcon from '@mui/icons-material/Info';
-import { NavigateNext } from "@mui/icons-material";
 import React from "react";
 
 function NavListDrawer(){

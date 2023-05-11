@@ -47,7 +47,7 @@ function Slider() {
             sx={{
               height: { xs: 250, sm: 400 },
             }}
-            image="src/assets/imgs/mb.jpg"
+            image="/src/assets/imgs/mb.jpg"
             alt=""
           ></CardMedia>
         </Card>
@@ -60,7 +60,7 @@ function Slider() {
             sx={{
               height: { xs: 250, sm: 400 },
             }}
-            image="src/assets/imgs/sotck.jpg"
+            image="/src/assets/imgs/sotck.jpg"
             alt=""
           ></CardMedia>
         </Card>
@@ -73,7 +73,7 @@ function Slider() {
             sx={{
               height: { xs: 250, sm: 400 },
             }}
-            image="src/assets/imgs/sotck.jpg"
+            image="/src/assets/imgs/sotck.jpg"
             alt=""
           ></CardMedia>
         </Card>

@@ -1,30 +1,120 @@
-import { useState } from 'react';
-import './Header.css'
-import NavBar from '../NavBar/NavBar';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import "./Header.css";
+import NavBarMobile from "../NavBar/NavBarMobile";
+import { LinkToTop } from "../../utils/LinkToTop";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import InfoIcon from "@mui/icons-material/Info";
+import NavListDrawer from "../NavBar/NavListDrawer";
 
- function Header(){
-    let navigate = useNavigate();
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Slide,
+  Stack,
+  Toolbar,
+  Typography,
+  useScrollTrigger,
+} from "@mui/material";
+import { forwardRef } from "react";
 
-    const [openNavBarMobile,setOpenNavBarMobile] = useState(false);
+function HideOnScroll(props) {
+  const { children, window } = props;
 
-    const openNavBar = () =>{
-        setOpenNavBarMobile(!openNavBarMobile);
-    }
+  const trigger = useScrollTrigger();
 
-    const redirectHome = ()=>{
-        navigate("/");
-    }
-    
-    return(
-        <>
-            <NavBar openNavBarMobile = {openNavBarMobile} setOpenNavBarMobile={setOpenNavBarMobile}/>
-            <header> 
-                <button onClick={openNavBar} className={openNavBarMobile?"icon-close":"icon-menu"}/>
-                <button onClick={redirectHome} className="logo-motor-fortune"></button>
-            </header>
-        </>
-    )
+  return (
+    <Slide appear={false} direction="down" in={trigger}>
+      {children}
+    </Slide>
+  );
 }
+
+const pages = [
+  {
+    title: "My account",
+    path: "#account",
+    icon: () => <ManageAccountsIcon sx={{ fontSize: 30 }} />,
+  },
+  {
+    title: "Cars",
+    path: "#cars",
+    icon: () => <DirectionsCarIcon sx={{ fontSize: 30 }} />,
+  },
+  {
+    title: "About us",
+    path: "#Home",
+    icon: () => <InfoIcon sx={{ fontSize: 30 }} />,
+  },
+];
+
+const Header = forwardRef((props, ref) => {
+  const [openNavBarMobile, setOpenNavBarMobile] = useState(false);
+
+  const openNavBar = () => {
+    setOpenNavBarMobile(!openNavBarMobile);
+  };
+
+  return (
+    <>
+      <AppBar
+        ref={ref}
+        position={props.position}
+        sx={{
+          backgroundColor: "#0057FF",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                gap: 4,
+              }}
+            >
+              {pages.map((page) => (
+                <Button
+                  key={page.title}
+                  // onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "flex",
+                    alignContent: "center",
+                  }}
+                >
+                  {
+                    <>
+                      {page.icon()}
+                      <Typography variant="h5" fontWeight={"600"}>
+                        {page.title}
+                      </Typography>
+                    </>
+                  }
+                </Button>
+              ))}
+            </Box>
+            <Box sx={{ display: { sm: "flex", md: "none", flexGrow: 1 } }}>
+              <NavBarMobile
+                openNavBarMobile={openNavBarMobile}
+                setOpenNavBarMobile={setOpenNavBarMobile}
+              />
+              <button onClick={openNavBar} className={"icon-menu"} />
+            </Box>
+            <LinkToTop to="/">
+              <button className="logo-motor-fortune"></button>
+            </LinkToTop>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {/* <header> 
+            </header> */}
+    </>
+  );
+});
 
 export default Header;

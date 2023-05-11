@@ -28,7 +28,7 @@
 .container-footer--info__logo_MF{
     width: 170px;
     height: 100%;
-    background-image: url('src/assets/icons/logo-motor-fortune.svg');
+    background-image: url('/src/assets/icons/logo-motor-fortune.svg');
     background-repeat: no-repeat;
     background-size: contain;
 } 
@@ -55,7 +55,7 @@
     align-items: center;
 }
 .logo-twitter{
-    background-image: url('src/assets/icons/twitter.svg');
+    background-image: url('/src/assets/icons/twitter.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -63,7 +63,7 @@
     height: 50px;
 }
 .logo-facebook{
-    background-image: url('src/assets/icons/facebook.svg');
+    background-image: url('/src/assets/icons/facebook.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -71,7 +71,7 @@
     height: 50px;
 }
 .logo-instagram{
-    background-image: url('src/assets/icons/instagram.svg');
+    background-image: url('/src/assets/icons/instagram.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -92,7 +92,7 @@
     margin: 0;
 }
 .copyright-logo{
-    background-image: url('src/assets/icons/copyright.svg');
+    background-image: url('/src/assets/icons/copyright.svg');
     width: 15px;
     height: 15px;
     margin-right: 4px;

@@ -1,29 +1,28 @@
-import {BrowserRouter,Route,Routes} from 'react-router-dom';
-import PagePosts from "./pages/PagePosts/PagePosts"
-import PageHome from './pages/PageHome/PageHome';
-import PagePost from './pages/PagePost/PagePost';
-import PageTransaction from './pages/PageTransaction/PageTransaction';
-import PageLogin from './pages/PageLogin/PageLogin';
-import PageRegister from './pages/PageRegister/PageRegister';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PagePosts from "./pages/PagePosts/PagePosts";
+import PageHome from "./pages/PageHome/PageHome";
+import PagePost from "./pages/PagePost/PagePost";
+import PageTransaction from "./pages/PageTransaction/PageTransaction";
+import PageLogin from "./pages/PageLogin/PageLogin";
+import PageRegister from "./pages/PageRegister/PageRegister";
 
 function App() {
-  
-
   return (
-  <>
-    <BrowserRouter>
+    <>
+      <BrowserRouter>
         <Routes>
-            <Route path= "/posts" element={<PagePosts/>} />
-            <Route path= "/" element={<PageHome/>} />
-            <Route path= "/post" element={<PagePost/>} />
-            <Route path= "/transaction" element={<PageTransaction/>} />
-            <Route path= "/login" element={<PageLogin/>} />
-            <Route path= "/register" element={<PageRegister/>} />
+          <Route path="/">
+            <Route index element={<PageHome />} />
+            <Route path="posts" element={<PagePosts />} />
+            <Route path="posts/:id" element={<PagePost />} />
+            <Route path="transaction" element={<PageTransaction />} />
+            <Route path="login" element={<PageLogin />} />
+            <Route path="register" element={<PageRegister />} />
+          </Route>
         </Routes>
-    </BrowserRouter>
-
-  </>
-  )
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;

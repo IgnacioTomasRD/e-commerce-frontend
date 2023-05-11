@@ -2,15 +2,17 @@ import Slider from "../../components/SliderHome/Slider";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import "./PageHome.css";
-import { Button, Container, Divider, Stack } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Button, Container, Stack } from "@mui/material";
+import { LinkToTop } from "../../utils/LinkToTop";
+import HideComponentOnScroll from "../../utils/HideComponentOnScroll";
 
-function PageHome() {
-  const navigate = useNavigate();
+function PageHome() {  
 
   return (
     <>
-      <Header />
+      <HideComponentOnScroll>
+        <Header position="fixed" />
+      </HideComponentOnScroll>
       <Slider />
       <Container
         sx={{
@@ -33,24 +35,26 @@ function PageHome() {
             marginBottom: "20px",
           }}
         >
-          <Button
-            onClick={()=>navigate('/posts')}
-            sx={{
-              backgroundColor: "#0057FF",
-              height: "auto",
-              fontSize: "1.6rem",
-              padding: 0.85,
-              textAlign: 'center',
-              fontWeight: "bold",
-              "&:hover": {
+          <LinkToTop to="/posts">
+            <Button
+              // onClick={()=>navigate('/posts')}
+              sx={{
                 backgroundColor: "#0057FF",
-              },
-            }}
-            size="large"
-            variant="contained"
-          >
-            see all vehicles <br/> for sale
-          </Button>
+                height: "auto",
+                fontSize: "1.6rem",
+                padding: 0.85,
+                textAlign: "center",
+                fontWeight: "bold",
+                "&:hover": {
+                  backgroundColor: "#0057FF",
+                },
+              }}
+              size="large"
+              variant="contained"
+            >
+              see all vehicles <br /> for sale
+            </Button>
+          </LinkToTop>
         </Container>
         <div className="line-fw" />
         <Container
@@ -69,35 +73,36 @@ function PageHome() {
         </Container>
         <div className="line-fw" />
         <Stack
-         sx={{
-          flexDirection: 'row',
-          flexWrap: 'wrap'
-         }}
+          sx={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
         >
           <p
             style={{
               height: "120px",
-              fontSize: '1.5rem',
+              fontSize: "1.5rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              width: '50%',
-              fontWeight: 'bold'
+              width: "50%",
+              fontWeight: "bold",
             }}
           >
             {" "}
             About us{" "}
           </p>
-          <span className = "logo-mf"></span>
+          <span className="logo-mf"></span>
           <p
-          style={{
+            style={{
               height: "120px",
-              fontSize: '1.5rem',
-              width:'100%',
-              textAlign: 'center',
-              fontWeight: '500',
-              marginTop: '30px'
-            }}>
+              fontSize: "1.5rem",
+              width: "100%",
+              textAlign: "center",
+              fontWeight: "500",
+              marginTop: "30px",
+            }}
+          >
             We are Motor Fortuna, your best option for buying the best cars on
             the market since 2023.
           </p>

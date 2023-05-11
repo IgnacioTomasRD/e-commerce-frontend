@@ -1,9 +1,8 @@
 import { Divider, Drawer, IconButton, styled } from "@mui/material";
 import NavListDrawer from "./NavListDrawer";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-function NavBar({openNavBarMobile,setOpenNavBarMobile}){
+function NavBarMobile({openNavBarMobile,setOpenNavBarMobile}){
     const DrawerHeader = styled('div')(({ theme }) => ({
         display: 'flex',
         alignItems: 'center',
@@ -37,4 +36,4 @@ function NavBar({openNavBarMobile,setOpenNavBarMobile}){
     </>
 }
 
-export default NavBar;
+export default NavBarMobile;

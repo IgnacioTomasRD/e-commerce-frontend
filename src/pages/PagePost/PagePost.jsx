@@ -32,10 +32,8 @@ function PagePost(props) {
             width: 1,
             justifyContent: "space-between",
             minHeight: "70px",
-            marginBottom: "10px",
-            minHeight: "70px",
+            marginBottom: "10px"
           }}
-          minHeight={"70px"}
         >
           <Typography
             variant="h4"

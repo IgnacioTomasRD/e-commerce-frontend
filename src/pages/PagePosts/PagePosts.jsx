@@ -5,15 +5,17 @@ import Header from "../../components/Header/Header";
 import ProductsListPost from "../../components/ProductsListPost/ProductsListPost";
 import Searcher from "../../components/Searcher/Seacher";
 import "./PagePosts.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductPost from "../../components/ProductPost/ProductPost";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { ScrollRestoration } from "react-router-dom";
 
 function PagePosts() {
   const [isOpenShopCart, setOpenShopCart] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header position = 'static' />
       <main className="container-models">
         <h2 className="container-models_title">Models</h2>
         <Searcher />

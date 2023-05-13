@@ -1,4 +1,11 @@
-import { Button, Container, Divider, Drawer, Stack } from "@mui/material";
+import {
+  Badge,
+  Button,
+  Container,
+  Divider,
+  Drawer,
+  Stack,
+} from "@mui/material";
 import Filter from "../../components/Filter/Filter";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
@@ -8,14 +15,13 @@ import "./PagePosts.css";
 import { useEffect, useState } from "react";
 import ProductPost from "../../components/ProductPost/ProductPost";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { ScrollRestoration } from "react-router-dom";
 
 function PagePosts() {
   const [isOpenShopCart, setOpenShopCart] = useState(false);
 
   return (
     <>
-      <Header position = 'static' />
+      <Header position="static" />
       <main className="container-models">
         <h2 className="container-models_title">Models</h2>
         <Searcher />
@@ -24,7 +30,11 @@ function PagePosts() {
         <ProductsListPost />
         <Button
           onClick={() => setOpenShopCart(true)}
-          sx={{ borderRadius: "50%", position: "sticky", marginBottom: "10px" }}
+          sx={{
+            borderRadius: "50%",
+            position: "sticky",
+            marginBottom: "10px",
+          }}
           className="shopping-cart"
         ></Button>
       </main>
@@ -37,10 +47,12 @@ function PagePosts() {
         onClose={() => setOpenShopCart(false)}
       >
         <Container>
-          <ChevronRightIcon
-            sx={{ fontSize: "50px" }}
-            onClick={() => setOpenShopCart(false)}
-          ></ChevronRightIcon>
+          <Button sx={{ borderRadius: "50%" }}>
+            <ChevronRightIcon
+              sx={{ fontSize: "50px", color: "black" }}
+              onClick={() => setOpenShopCart(false)}
+            ></ChevronRightIcon>
+          </Button>
           <Stack spacing={2}>
             <ProductPost
               cross

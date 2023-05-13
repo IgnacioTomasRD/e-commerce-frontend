@@ -22,10 +22,19 @@
     left: calc(50% - 2rem);
        bottom: 90px;
 }
-.flecha:hover{
-   color:#229bf4;
-    cursor: pointer;
+.logo-motor-fortuna-slide{
+    background-image: url('src/assets/icons/logo-motor-fortune.svg');
+    height: 50px;
+    width: 160px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: calc(50% - 80px);
+    z-index: 6000;
 }
+
 @keyframes arrow {
     0% {
     transform: translate(0px, 50px);
@@ -47,7 +56,7 @@
     .flecha{
         display: block;
         font-size: 10rem;
-        top: var(--swiper-navigation-top-offset,70%);
+        top: var(--swiper-navigation-top-offset,75%);
         left: calc(50% - 50px);
     }
     @keyframes arrow {
@@ -60,5 +69,10 @@
         100% {
         transform: translate(0px, 50px);
         }
+    }
+    .logo-motor-fortuna-slide{
+        height: 100px;
+        width: 160px;
+        right: calc(50% - 80px);
     }
   }

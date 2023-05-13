@@ -17,6 +17,7 @@ function Slider() {
       autoplay={{
         delay: 2000,
       }}
+      onSwiper={(swiper) => console.log(swiper)}
       modules={[Autoplay,Navigation, Pagination]}
       navigation
       pagination={{ 
@@ -25,7 +26,7 @@ function Slider() {
          }}
     >
       <SwiperSlide>
-        <img className="slider-home-img" src="src\assets\imgs\bugatti.jpg" alt=""></img>
+        <img className="slider-home-img" src="src\assets\imgs\wp6.jpg" alt=""></img>
       </SwiperSlide>
       <SwiperSlide>
         <img className="slider-home-img" src="src\assets\imgs\coches-bmw.jpeg" alt=""></img>
@@ -34,6 +35,7 @@ function Slider() {
         <img className="slider-home-img" src="src\assets\imgs\mcclaren.jpg" alt=""></img>
       </SwiperSlide>
       <KeyboardDoubleArrowDownIcon className='flecha' fontSize="100rem"/>
+      <span className="logo-motor-fortuna-slide"/>
     </Swiper>
   );
 }

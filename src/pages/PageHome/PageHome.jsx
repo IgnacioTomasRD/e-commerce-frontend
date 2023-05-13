@@ -37,9 +37,7 @@ function PageHome() {
         >
           <LinkToTop to="/posts">
             <Button
-              // onClick={()=>navigate('/posts')}
               sx={{
-                backgroundColor: "#0057FF",
                 height: "auto",
                 fontSize: "1.6rem",
                 padding: 0.85,

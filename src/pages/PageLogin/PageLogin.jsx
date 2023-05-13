@@ -9,6 +9,7 @@ import {
 import { useFormik } from "formik";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { LinkToTop } from "../../utils/LinkToTop";
 
 function PageLogin() {
   const formik = useFormik({
@@ -32,10 +33,10 @@ function PageLogin() {
     >
       <Header />
       <Paper
-        elevation={10}
+        elevation={7}
         sx={{
           position: "absolute",
-          top: "180px",
+          top: "25%",
           maxWidth: "450px !important",
           padding: "25px",
           margin: "15px",
@@ -86,7 +87,11 @@ function PageLogin() {
             helperText={formik.touched.password && formik.errors.password}
           />
           <Button
-            sx={{ backgroundColor:"#0057FF",marginTop: "10px", fontSize: '1rem' }}
+            sx={{
+              backgroundColor: "#0057FF",
+              marginTop: "10px",
+              fontSize: "1rem",
+            }}
             color="primary"
             variant="contained"
             fullWidth
@@ -101,9 +106,12 @@ function PageLogin() {
         >
           Dont you have an account?
         </Typography>
-        <Stack sx ={{marginTop:'10px'}}>
-          <Button variant="outlined" sx={{ margin: "auto", color: "#0057FF",fontSize:'1.1rem' }}>
-            SIGN UP
+        <Stack sx={{ marginTop: "10px" }}>
+          <Button
+            variant="outlined"
+            sx={{ margin: "auto", color: "#0057FF", fontSize: "1.1rem" }}
+          >
+            <LinkToTop to="/register">SIGN UP</LinkToTop>
           </Button>
         </Stack>
       </Paper>

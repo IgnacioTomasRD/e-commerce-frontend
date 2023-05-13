@@ -24,7 +24,7 @@ function PagePost(props) {
 
   return (
     <>
-      <Header />
+      <Header position = 'static'/>
       <Container sx={{ maxWidth: "850px !important" }}>
         <Container
           sx={{
@@ -147,13 +147,13 @@ function PagePost(props) {
             justifyContent={"space-between"}
           >
             <Button
-              sx={{ width: "120px", color: "#0057FF", borderColor: "#0057FF" }}
+              sx={{ width: "60%", maxWidth: '200px', color: "#0057FF", borderColor: "#0057FF" }}
               variant="outlined"
             >
               ADD TO SHOPPING CART
             </Button>
             <Button
-              sx={{ width: "120px", color: "#0057FF", borderColor: "#0057FF" }}
+              sx={{ width: "30%", color: "#0057FF", borderColor: "#0057FF" }}
               variant="outlined"
             >
               BUY NOW

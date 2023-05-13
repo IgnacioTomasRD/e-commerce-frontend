@@ -31,7 +31,7 @@ function FormUserSettings() {
               id="email"
               name="email"
               margin="dense"
-              label="email"
+              label="Email"
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
@@ -57,7 +57,7 @@ function FormUserSettings() {
                   fontSize: "12px",
                 },
               }}
-              label="password"
+              label="Password"
               margin="dense"
               type="password"
               value={formik.values.password}

@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 function PageTransaction() {
   return (
     <Stack direction={"row"} flexWrap={"wrap"} width={"100vw"} height={"100vh"}>
-      <Header />
+      <Header position = 'static'/>
       <Container sx={{ maxWidth: "788px !important"}}>
         <Typography marginTop={4} marginBottom={1} variant="h2">
           {" "}

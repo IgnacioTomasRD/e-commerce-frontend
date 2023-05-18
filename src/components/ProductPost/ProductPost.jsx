@@ -15,6 +15,7 @@ function ProductPost({ name, units, cross, price }) {
       <Card
         sx={{ maxHeight: "600px", height: "auto", position: "relative" }}
         raised
+        elevation={3}
       >
         <CardActionArea>
           <Stack direction={{xs:"column",sm:"row"}}>

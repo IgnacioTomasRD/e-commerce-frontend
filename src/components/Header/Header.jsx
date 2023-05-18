@@ -5,48 +5,33 @@ import { LinkToTop } from "../../utils/LinkToTop";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import InfoIcon from "@mui/icons-material/Info";
-import NavListDrawer from "../NavBar/NavListDrawer";
 
 import {
   AppBar,
   Box,
   Button,
   Container,
-  Slide,
-  Stack,
   Toolbar,
   Typography,
-  useScrollTrigger,
 } from "@mui/material";
 import { forwardRef } from "react";
 
-function HideOnScroll(props) {
-  const { children, window } = props;
-
-  const trigger = useScrollTrigger();
-
-  return (
-    <Slide appear={false} direction="down" in={trigger}>
-      {children}
-    </Slide>
-  );
-}
 
 const pages = [
   {
     title: "My account",
     path: "#account",
-    icon: () => <ManageAccountsIcon sx={{ fontSize: 30 }} />,
+    icon: () => <ManageAccountsIcon sx={{ color: '#e9ebff', fontSize: 30 }} />,
   },
   {
     title: "Cars",
     path: "#cars",
-    icon: () => <DirectionsCarIcon sx={{ fontSize: 30 }} />,
+    icon: () => <DirectionsCarIcon sx={{ color: '#e9ebff', fontSize: 30 }} />,
   },
   {
     title: "About us",
     path: "#Home",
-    icon: () => <InfoIcon sx={{ fontSize: 30 }} />,
+    icon: () => <InfoIcon sx={{ color: '#e9ebff',fontSize: 30 }} />,
   },
 ];
 
@@ -63,7 +48,7 @@ const Header = forwardRef((props, ref) => {
         ref={ref}
         position={props.position}
         sx={{
-          backgroundColor: "#0057FF",
+          backgroundColor:"#0057FF",
         }}
       >
         <Container maxWidth="xl">
@@ -89,7 +74,7 @@ const Header = forwardRef((props, ref) => {
                   {
                     <>
                       {page.icon()}
-                      <Typography variant="h5" fontWeight={"600"}>
+                      <Typography color={'#e9ebff'} variant="h5" fontWeight={"600"}>
                         {page.title}
                       </Typography>
                     </>
@@ -110,9 +95,6 @@ const Header = forwardRef((props, ref) => {
           </Toolbar>
         </Container>
       </AppBar>
-
-      {/* <header> 
-            </header> */}
     </>
   );
 });

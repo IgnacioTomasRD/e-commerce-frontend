@@ -1,10 +1,22 @@
-import { Box, Button, Stack, Step, StepLabel, Stepper, Typography } from "@mui/material";
-import React from 'react'
-import { LinkToTop } from "../../utils/LinkToTop";
+import {
+  Box,
+  Button,
+  Stack,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
+import React from "react";
 import FinishStepper from "../FinishStepper/FinishStepper";
 
-function StepperDesktop({steps,activeStep,handleNext,handleBack,handleReset}) {
-
+function StepperDesktop({
+  steps,
+  activeStep,
+  handleNext,
+  handleBack,
+  handleReset,
+}) {
   return (
     <div>
       <Stepper
@@ -17,13 +29,19 @@ function StepperDesktop({steps,activeStep,handleNext,handleBack,handleReset}) {
         activeStep={activeStep}
       >
         {steps.map((step) => {
-          const stepProps = {};
-          const labelProps = {};
           return (
-            <Step key={step.label} {...stepProps}>
+            <Step key={step.label}>
               <StepLabel
                 StepIconProps={{ sx: { fontSize: "3rem" } }}
-                {...labelProps}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flexWrap: "wrap",
+                  alignContent: "center",
+                  '& .MuiStepLabel-iconContainer':{
+                    padding:0
+                  }
+                }}
               >
                 {step.label}
               </StepLabel>
@@ -33,7 +51,7 @@ function StepperDesktop({steps,activeStep,handleNext,handleBack,handleReset}) {
       </Stepper>
       {activeStep === steps.length ? (
         <>
-          <FinishStepper/>
+          <FinishStepper />
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
             <Box sx={{ flex: "1 1 auto" }} />
             <Button onClick={handleReset}>Reset</Button>

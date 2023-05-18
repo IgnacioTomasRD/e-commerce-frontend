@@ -1,27 +1,24 @@
 import {
-  Badge,
   Button,
   Container,
-  Divider,
   Drawer,
   Stack,
 } from "@mui/material";
 import Filter from "../../components/Filter/Filter";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 import ProductsListPost from "../../components/ProductsListPost/ProductsListPost";
 import Searcher from "../../components/Searcher/Seacher";
 import "./PagePosts.css";
 import { useEffect, useState } from "react";
 import ProductPost from "../../components/ProductPost/ProductPost";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LayoutPage from "../../utils/LayoutPage";
 
 function PagePosts() {
   const [isOpenShopCart, setOpenShopCart] = useState(false);
 
   return (
     <>
-      <Header position="static" />
+    <LayoutPage>
       <main className="container-models">
         <h2 className="container-models_title">Models</h2>
         <Searcher />
@@ -80,7 +77,7 @@ function PagePosts() {
           </Stack>
         </Container>
       </Drawer>
-      <Footer />
+      </LayoutPage>
     </>
   );
 }

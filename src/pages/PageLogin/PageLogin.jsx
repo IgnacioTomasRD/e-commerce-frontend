@@ -7,9 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import { LinkToTop } from "../../utils/LinkToTop";
+import LayoutPage from "../../utils/LayoutPage";
 
 function PageLogin() {
   const formik = useFormik({
@@ -23,15 +22,7 @@ function PageLogin() {
   });
 
   return (
-    <Stack
-      position={"relative"}
-      width={1}
-      direction={"row"}
-      height={"100vh"}
-      flexWrap={"wrap"}
-      justifyContent={"center"}
-    >
-      <Header />
+    <LayoutPage fullHeight position="relative">
       <Paper
         elevation={7}
         sx={{
@@ -115,10 +106,7 @@ function PageLogin() {
           </Button>
         </Stack>
       </Paper>
-      <Stack width={1} alignSelf={"end"}>
-        <Footer />
-      </Stack>
-    </Stack>
+    </LayoutPage>
   );
 }
 

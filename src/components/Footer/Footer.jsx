@@ -1,5 +1,16 @@
 import "./Footer.css";
 import { LinkToTop } from "../../utils/LinkToTop";
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import CopyrightIcon from '@mui/icons-material/Copyright';
+
+const iconStyle={
+  color: '#e9ebff',
+  width: '50px',
+  height: '50px',
+}
+
 
 function Footer() {
   return (
@@ -14,20 +25,20 @@ function Footer() {
           <h2>visit us:</h2>
           <div className="container-icons">
             <LinkToTop >
-              <div className="logo-twitter" />
+              <TwitterIcon sx={iconStyle}></TwitterIcon>
             </LinkToTop>
             <LinkToTop >
-              <div className="logo-facebook" />
+              <FacebookIcon sx = {iconStyle}></FacebookIcon>
             </LinkToTop>
             <LinkToTop >
-              <div className="logo-instagram" />
+              <InstagramIcon sx = {iconStyle}></InstagramIcon>
             </LinkToTop>
           </div>
         </article>
       </section>
       <div className="line-footer" />
       <section className="container-footer--copyright">
-        <div className="copyright-logo" />
+        <CopyrightIcon sx = {{...iconStyle,width: '20px',height:'20px'}}></CopyrightIcon>
         <p className="container-footer--copyright__name">Motor Fortuna Group</p>
       </section>
     </footer>

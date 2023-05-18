@@ -1,12 +1,10 @@
 import { Button, Container, Divider, Stack, Typography } from "@mui/material";
 import ProductPost from "../../components/ProductPost/ProductPost";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import LayoutPage from "../../utils/LayoutPage";
 
 function PageTransaction() {
   return (
-    <Stack direction={"row"} flexWrap={"wrap"} width={"100vw"} height={"100vh"}>
-      <Header position = 'static'/>
+    <LayoutPage fullHeight>
       <Container sx={{ maxWidth: "788px !important"}}>
         <Typography marginTop={4} marginBottom={1} variant="h2">
           {" "}
@@ -108,10 +106,7 @@ function PageTransaction() {
           </Button>
         </Stack>
       </Container>
-      <Stack width={1} alignSelf={"end"}>
-        <Footer />
-      </Stack>
-    </Stack>
+    </LayoutPage>
   );
 }
 

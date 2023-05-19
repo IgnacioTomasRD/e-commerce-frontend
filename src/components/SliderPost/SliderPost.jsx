@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-creative";
 import { Card, CardMedia } from "@mui/material";
 
-function Slider() {
+function Slider({ imgs }) {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -36,48 +36,24 @@ function Slider() {
       }}
       pagination={pagination}
     >
-      <SwiperSlide>
-        <Card
-          sx={{
-            borderRadius: "20px",
-          }}
-        >
-          <CardMedia
-            component="img"
+      {imgs?.map((img, key) => (
+        <SwiperSlide key = {key}>
+          <Card
             sx={{
-              height: { xs: 250, sm: 400 },
+              borderRadius: "20px",
             }}
-            image="/src/assets/imgs/mb.jpg"
-            alt=""
-          ></CardMedia>
-        </Card>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Card sx={{
-            borderRadius: "20px",
-          }}>
-          <CardMedia
-            sx={{
-              height: { xs: 250, sm: 400 },
-            }}
-            image="/src/assets/imgs/sotck.jpg"
-            alt=""
-          ></CardMedia>
-        </Card>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Card sx={{
-            borderRadius: "20px",
-          }}>
-          <CardMedia
-            sx={{
-              height: { xs: 250, sm: 400 },
-            }}
-            image="/src/assets/imgs/sotck.jpg"
-            alt=""
-          ></CardMedia>
-        </Card>
-      </SwiperSlide>
+          >
+            <CardMedia
+              component="img"
+              sx={{
+                height: { xs: 250, sm: 400 },
+              }}
+              image={img}
+              alt=""
+            ></CardMedia>
+          </Card>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }

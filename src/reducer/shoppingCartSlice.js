@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     totalCount:0,
-    products: []
+    posts: []
 }
 
 
 export const shoppingCartSlice = createSlice({
-  name: 'cart',
+  name: 'shoppingCart',
   initialState: initialState,
   reducers: {
-    setProducts: (state,action) => {
-        state.products = [...state.products,action.payload];
+    setPosts: (state,action) => {
+        state.posts = [...state.posts,action.payload];
         state.totalCount++;
     },
     // decrement: (state) => {

@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const postsSlice = createSlice({
-  name: 'counter',
-  initialState: [],
+  name: 'posts',
+  initialState: {},
   reducers: {
-    setProducts: (state,action) => {
+    setPosts: (state,action) => {
         state = [...action.payload];
     },
     // decrement: (state) => {
@@ -17,6 +17,6 @@ export const postsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = postsSlice.actions
+export const { setProducts } = postsSlice.actions
 
 export default postsSlice.reducer

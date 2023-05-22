@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React from "react";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
@@ -11,8 +11,8 @@ function LayoutPage({ children, fullHeight, headerHiddenOnScroll, position }) {
       width={1}
       flexDirection={"row"}
       flexWrap={"wrap"}
-      position = {position ? position : 'static'}
-      justifyContent={'center'}
+      position={position ? position : "static"}
+      justifyContent={"center"}
     >
       {headerHiddenOnScroll ? (
         <HideComponentOnScroll>
@@ -21,7 +21,7 @@ function LayoutPage({ children, fullHeight, headerHiddenOnScroll, position }) {
       ) : (
         <Header position="static" />
       )}
-      {children}
+      <Box sx = {{minHeight:'calc(100vh - 272px)',width: 1}}>{children}</Box>{" "}
       {fullHeight ? (
         <Stack width={1} alignSelf={"end"}>
           <Footer />

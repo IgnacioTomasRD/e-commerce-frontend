@@ -1,9 +1,8 @@
 import {
   Button,
-  Collapse,
+  CircularProgress,
   Container,
   Divider,
-  Grid,
   Stack,
   Typography,
 } from "@mui/material";
@@ -12,7 +11,7 @@ import "./PagePost.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import LayoutPage from "../../utils/LayoutPage";
 import {
   styleButtonBack,
@@ -22,60 +21,117 @@ import {
 } from "./StylesPost";
 import DescriptionCollapse from "../../components/DescriptionCollapse/DescriptionCollapse";
 import CharacteristicsCollapse from "../../components/CharacteristicsCollapse/CharacteristicsCollapse";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPost } from "../../api";
+import { addPost } from "../../reducer/shoppingCartSlice";
+import { blue } from "@mui/material/colors";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-const post = {
-  id: '1',
+const postDefault = {
+  id: "",
   product: {
-    name: "AMG GTR 2020",
-    description:
-      "from 0 to 100KM/H in 3.6s, The car has up-to-date service",
-    category: "SPORT",
-    characteristics: [
-      {
-        name: "KM",
-        value: 30,
-      },
-      {
-        name: "year",
-        value: "2020",
-      },
-    ],
-    imgs: ["/src/assets/imgs/mb.jpg"],
+    name: "",
+    description: "",
+    category: "T",
+    characteristics: [],
+    imgs: [],
   },
-  description: "The best financing, 98 installments with compound interest",
-  price: 200000,
-  stock: 10,
-  state: "ACTIVE",
-}
+  description: "",
+  price: 0,
+  stock: 0,
+  state: "",
+};
+
+
+const ButtonShoppingCart = ({ onClick, loading,success }) => (
+  <Button
+    disabled={loading}
+    sx={styleButtonShoppingCart}
+    variant="outlined"
+    onClick={onClick}
+  >
+    {" "}
+    {success ? <CheckCircleIcon sx = {{height: '56px'}}fontSize="large"/> : "ADD TO SHOPPING CART"  }
+    {loading && (
+      <CircularProgress
+        size={24} 
+        sx={{
+          color: blue[500],
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          marginTop: "-12px",
+          marginLeft: "-12px",
+        }}
+      />
+    )}
+  </Button>
+);
+
+const ButtonBuyNow = () => (
+  <Button
+    sx={{ width: "30%", color: "#0057FF", borderColor: "#0057FF" }}
+    variant="outlined"
+  >
+    BUY NOW
+  </Button>
+);
 
 function PagePost() {
   const [units, setUnits] = useState(1);
-  const {product} = post;
+  const [post, setPost] = useState(postDefault);
+  const navigate = useNavigate();
+  const params = useParams();
+  const posts = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
+  useEffect(() => {
+    const id = params.id;
+    const postIndex = posts.findIndex((post) => post.id === id);
+    if (postIndex >= 0) {
+      setPost(posts[postIndex]);
+    } else {
+      const getPostById = async () => {
+        const post = await fetchPost(id);
+        setPost(post);
+      };
+      getPostById();
+    }
+  }, []);
 
-  const ButtonShoppingCart = () => (
-    <Button sx={styleButtonShoppingCart} variant="outlined">
-      {" "}
-      ADD TO SHOPPING CART{" "}
-    </Button>
-  );
-  const ButtonBuyNow = () => (
-    <Button
-      sx={{ width: "30%", color: "#0057FF", borderColor: "#0057FF" }}
-      variant="outlined"
-    >
-      BUY NOW
-    </Button>
-  );
+  const plusUnit = () =>
+    setUnits((prevState) =>
+      prevState === post?.stock ? post?.stock : prevState + 1
+    );
+  const minusUnit = () =>
+    setUnits((prevState) => (prevState > 1 ? prevState - 1 : 1));
+
+  const addToShoppingCart = async () => {
+    setLoading(true);
+    dispatch(addPost({ post, units }));
+    setTimeout(() => {
+      setLoading(false);
+      setSuccess(true);
+      setTimeout(() => setSuccess(false),2000)
+    }, 2000);
+  };
+
 
   const Name = () => (
     <Typography variant="h4" sx={styleNameProduct}>
       {" "}
-      {product?.name}{" "}
+      {post.product?.name}{" "}
     </Typography>
   );
   const ButtonBack = () => (
-    <Button variant="contained" sx={styleButtonBack}>
+    <Button
+      variant="contained"
+      onClick={() => navigate(-1)}
+      sx={styleButtonBack}
+    >
       <ArrowBackIosIcon
         sx={{ color: "white", fontSize: 40, paddingLeft: "11px" }}
       />
@@ -90,37 +146,41 @@ function PagePost() {
             <Name />
             <ButtonBack />
           </Container>
-          <Slider imgs = {product?.imgs}/>
+          <Slider imgs={post.product?.imgs} />
           <Container sx={{ padding: 0, marginTop: 2 }}>
             <Typography variant="h5">Price: {post?.price}USD</Typography>
             <Typography variant="h5">Stock: {post?.stock} units</Typography>
             <Stack direction={"row"} alignItems={"center"}>
               <Typography variant="h5">Units: {units}</Typography>
               <Button
-                sx={{ margin: 0, padding:1, minWidth: 0 }}
+                sx={{ margin: 0, padding: 1, minWidth: 0 }}
+                onClick={plusUnit}
               >
-                <ControlPointIcon
-                  sx={{ color: "primary.main" }}
-                />
+                <ControlPointIcon sx={{ color: "primary.main" }} />
               </Button>
               <Button
-                sx={{ margin: 0, padding:1, minWidth: 0 }}
+                sx={{ margin: 0, padding: 1, minWidth: 0 }}
+                onClick={minusUnit}
               >
                 <RemoveCircleOutlineIcon sx={{ color: "primary.main" }} />
               </Button>
             </Stack>
             <Divider></Divider>
-            <DescriptionCollapse description={product?.description} />
+            <DescriptionCollapse description={post.product?.description} />
             <Divider />
             <CharacteristicsCollapse
-              characteristics={product?.characteristics}
+              characteristics={post.product?.characteristics}
             />
             <Stack
               sx={{ marginTop: 2, marginBottom: 5 }}
               direction={"row"}
               justifyContent={"space-between"}
             >
-              <ButtonShoppingCart />
+              <ButtonShoppingCart
+                onClick={addToShoppingCart}
+                loading={loading}
+                success = {success}
+              />
               <ButtonBuyNow />
             </Stack>
           </Container>

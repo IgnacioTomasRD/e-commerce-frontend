@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import postsReducer from './reducer/productSlice'
+import postsReducer from './reducer/postsSlice'
 import shoppingCartReducer from './reducer/shoppingCartSlice'
 import createSagaMiddleware from 'redux-saga'
 

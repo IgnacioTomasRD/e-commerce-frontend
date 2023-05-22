@@ -7,8 +7,22 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
+import * as yup from 'yup';
 import { LinkToTop } from "../../utils/LinkToTop";
 import LayoutPage from "../../utils/LayoutPage";
+import { styleButtonLogin, styleContainer, styleInput } from "./StyleLogin";
+import { login } from "../../api";
+
+const validationSchema = yup.object({
+  email: yup
+    .string('Enter your email')
+    .email('Enter a valid email')
+    .required('Email is required'),
+  password: yup
+    .string('Enter your password')
+    .min(8, 'Password should be of minimum 8 characters length')
+    .required('Password is required'),
+});
 
 function PageLogin() {
   const formik = useFormik({
@@ -16,21 +30,23 @@ function PageLogin() {
       email: "",
       password: "",
     },
+    validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log("🚀 ~ file: PageLogin.jsx:38 ~ PageLogin ~ values:", values)
+      login(values.email,values.password);
     },
   });
 
   return (
     <LayoutPage fullHeight position="relative">
+    <Stack sx = {styleContainer}>
       <Paper
         elevation={7}
         sx={{
-          position: "absolute",
           top: "25%",
+          margin: 3,
           maxWidth: "450px !important",
           padding: "25px",
-          margin: "15px",
         }}
       >
         <Typography variant="h3" sx={{ fontWeight: "bold" }}>
@@ -48,27 +64,13 @@ function PageLogin() {
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
-            sx={{
-              "& .MuiInputBase-root": {
-                fontSize: "1.2rem",
-              },
-              "& .MuiFormLabel-root": {
-                fontSize: "1.2rem",
-              },
-            }}
+            sx={styleInput}
           />
           <TextField
             fullWidth
             id="password"
             name="password"
-            sx={{
-              "& .MuiInputBase-root": {
-                fontSize: "12px",
-              },
-              "& .MuiFormLabel-root": {
-                fontSize: "12px",
-              },
-            }}
+            sx={styleInput}
             label="Password"
             type="password"
             margin="dense"
@@ -78,11 +80,7 @@ function PageLogin() {
             helperText={formik.touched.password && formik.errors.password}
           />
           <Button
-            sx={{
-              backgroundColor: "#0057FF",
-              marginTop: "10px",
-              fontSize: "1rem",
-            }}
+            sx={styleButtonLogin}
             color="primary"
             variant="contained"
             fullWidth
@@ -106,6 +104,7 @@ function PageLogin() {
           </Button>
         </Stack>
       </Paper>
+      </Stack>
     </LayoutPage>
   );
 }

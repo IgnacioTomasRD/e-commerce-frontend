@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import ProductPost from "../ProductPost/ProductPost";
 import "./ProductsListPost.css";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigateToTop } from "../../hooks/useNavigateToTop";
 
 const post = {
@@ -29,14 +29,15 @@ const post = {
   state: "ACTIVE",
 }
 
-const posts = [post,{...post,id:'2', product:{ ...post.product, imgs:["/src/assets/imgs/amggtr.jpg","/src/assets/imgs/mb.jpg"]}},{...post,id:'3', product:{ ...post.product, imgs:["/src/assets/imgs/amggt.jpg"]}}]
+const postsr = [post,{...post,id:'2', product:{ ...post.product, imgs:["/src/assets/imgs/amggtr.jpg","/src/assets/imgs/mb.jpg"]}},{...post,id:'3', product:{ ...post.product, imgs:["/src/assets/imgs/amggt.jpg"]}}]
 
 function ProductsListPost() {
-  const dispatch = useDispatch();
+
+  const posts = useSelector(state => state.posts)
   const navigateTo = useNavigateToTop();
 
   const selectedPost = (post) => () =>{
-    navigateTo(post.id)
+    navigateTo(post._id)
   } 
 
 
@@ -46,7 +47,7 @@ function ProductsListPost() {
         <ProductPost
           name={post.product.name}
           km={post.product.characteristics.find(item => item.name === "KM")?.value}
-          year={post.product.characteristics.find(item => item.name === "year")?.value}
+          year={post.product.characteristics.find(item => item.name === "Year")?.value}
           category={post.product.category}
           price={post.price}
           key={index}

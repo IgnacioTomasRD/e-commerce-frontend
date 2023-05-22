@@ -28,6 +28,7 @@ const styleButtonBack = {
 
 const styleButtonShoppingCart = {
   width: "60%",
+  minHeight: '62px',
   maxWidth: "200px",
   color: "#0057FF",
   borderColor: "#0057FF",

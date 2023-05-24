@@ -1,21 +1,25 @@
-import { Button, Container, Drawer, Stack } from "@mui/material";
+import { Button, Container, Drawer, Stack, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ProductPost from "../ProductPost/ProductPost";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setOpen } from "../../reducer/shoppingCartSlice";
 
 const ShoppingCart = () => {
-  const [isOpenShopCart, setOpenShopCart] = useState(false);
+  const isOpenShopCart = useSelector(state => state.shoppingCart).isOpen;
+  console.log("🚀 ~ file: ShoppingCart.jsx:9 ~ ShoppingCart ~ isOpenShopCart:", isOpenShopCart)
+  const dispatch = useDispatch();
   const items = useSelector((state) => state.shoppingCart).items;
 
   return (
     <>
       <Button
-        onClick={() => setOpenShopCart(true)}
+        onClick={() => dispatch(setOpen(true))}
         sx={{
           borderRadius: "50%",
           position: "sticky",
           marginBottom: "10px",
+          display:{xs:'flex',md:'none'}
         }}
         className="shopping-cart"
       ></Button>
@@ -25,20 +29,20 @@ const ShoppingCart = () => {
         sx={{
           "& .MuiDrawer-paper": { width: 1, maxWidth: "600px" },
         }}
-        onClose={() => setOpenShopCart(false)}
+        onClose={() => dispatch(setOpen(false))}
       >
         <Container>
           <Button sx={{ borderRadius: "50%" }}>
             <ChevronRightIcon
               sx={{ fontSize: "50px", color: "black" }}
-              onClick={() => setOpenShopCart(false)}
+              onClick={() => dispatch(setOpen(false))}
             ></ChevronRightIcon>
           </Button>
           <Stack spacing={2}>
             {items.map((item, index) => {
               return (
                 <ProductPost
-                  key ={index}
+                  key={index}
                   cross
                   name={item.post.name}
                   units={item.units}
@@ -49,21 +53,29 @@ const ShoppingCart = () => {
             })}
           </Stack>
           <Stack direction={"row"} sx={{ marginTop: 2 }}>
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#0057FF",
-                width: 0.5,
-                minWidth: 0,
-                "&:hover": {
+            {items.length > 0 ? (
+              <Button
+                variant="contained"
+                sx={{
                   backgroundColor: "#0057FF",
-                },
-                margin: "auto",
-                marginBottom: "15px",
-              }}
-            >
-              Buy
-            </Button>
+                  width: 0.5,
+                  minWidth: 0,
+                  "&:hover": {
+                    backgroundColor: "#0057FF",
+                  },
+                  margin: "auto",
+                  marginBottom: "15px",
+                }}
+              >
+                Buy
+              </Button>
+            ) : (
+              <Typography variant="h4" textAlign={"center"} width={1}>
+                {" "}
+                Your shopping cart is empty!{" "} <br/>
+                Add cars!
+              </Typography>
+            )}
           </Stack>
         </Container>
       </Drawer>

@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import HideComponentOnScroll from "./HideComponentOnScroll";
 
-function LayoutPage({ children, fullHeight, headerHiddenOnScroll, position }) {
+function LayoutPage({ children, fullHeight, headerHiddenOnScroll, position ,withoutLabels, shoppingCart }) {
   return (
     <Stack
       height={fullHeight ? "100vh" : "auto"}
@@ -16,10 +16,10 @@ function LayoutPage({ children, fullHeight, headerHiddenOnScroll, position }) {
     >
       {headerHiddenOnScroll ? (
         <HideComponentOnScroll>
-          <Header position="fixed" />
+          <Header position="fixed" withoutLabels = {withoutLabels} shoppingCart = {shoppingCart}/>
         </HideComponentOnScroll>
       ) : (
-        <Header position="static" />
+        <Header position="static" withoutLabels = {withoutLabels} shoppingCart = {shoppingCart} />
       )}
       <Box sx = {{minHeight:'calc(100vh - 272px)',width: 1}}>{children}</Box>{" "}
       {fullHeight ? (

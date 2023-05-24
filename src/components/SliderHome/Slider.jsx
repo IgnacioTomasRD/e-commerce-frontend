@@ -17,7 +17,6 @@ function Slider() {
       autoplay={{
         delay: 2000,
       }}
-      onSwiper={(swiper) => console.log(swiper)}
       modules={[Autoplay,Navigation, Pagination]}
       navigation
       pagination={{ 

@@ -24,14 +24,35 @@ export const fetchPost = async (id) => {
 
 export const login = async (email, password) => {
   try {
-    const user = await fetch("http://localhost:3000/login", {
+    const res = await fetch("http://localhost:3000/login", {
       method: "POST",
-      body: {
-        email,
-        password,
+      headers: {
+        'Content-Type': 'application/json'
       },
+      credentials: 'include',
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
     });
-    console.log("🚀 ~ file: index.js:38 ~ login ~ user:", user);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const logout = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/logout", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    });
+    const data = await res.json();
+    return data;
   } catch (error) {
     console.log(error);
   }

@@ -11,7 +11,7 @@ import "./PagePost.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LayoutPage from "../../utils/LayoutPage";
 import {
   styleButtonBack,
@@ -26,7 +26,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPost } from "../../api";
 import { addPost } from "../../reducer/shoppingCartSlice";
 import { blue } from "@mui/material/colors";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+
 
 const postDefault = {
   id: "",
@@ -43,8 +44,7 @@ const postDefault = {
   state: "",
 };
 
-
-const ButtonShoppingCart = ({ onClick, loading,success }) => (
+const ButtonShoppingCart = ({ onClick, loading, success }) => (
   <Button
     disabled={loading}
     sx={styleButtonShoppingCart}
@@ -52,10 +52,14 @@ const ButtonShoppingCart = ({ onClick, loading,success }) => (
     onClick={onClick}
   >
     {" "}
-    {success ? <CheckCircleIcon sx = {{height: '56px'}}fontSize="large"/> : "ADD TO SHOPPING CART"  }
+    {success ? (
+      <CheckCircleIcon sx={{ height: "56px" }} fontSize="large" />
+    ) : (
+      "ADD TO SHOPPING CART"
+    )}
     {loading && (
       <CircularProgress
-        size={24} 
+        size={24}
         sx={{
           color: blue[500],
           position: "absolute",
@@ -87,6 +91,7 @@ function PagePost() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     const id = params.id;
@@ -115,10 +120,9 @@ function PagePost() {
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
-      setTimeout(() => setSuccess(false),2000)
+      setTimeout(() => setSuccess(false), 2000);
     }, 2000);
   };
-
 
   const Name = () => (
     <Typography variant="h4" sx={styleNameProduct}>
@@ -179,7 +183,7 @@ function PagePost() {
               <ButtonShoppingCart
                 onClick={addToShoppingCart}
                 loading={loading}
-                success = {success}
+                success={success}
               />
               <ButtonBuyNow />
             </Stack>

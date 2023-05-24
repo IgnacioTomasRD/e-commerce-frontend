@@ -28,7 +28,7 @@ function PagePosts() {
 
   return (
     <>
-      <LayoutPage>
+      <LayoutPage shoppingCart>
         <main className="container-models">
           <h2 className="container-models_title">Models</h2>
           <Searcher />

@@ -6,6 +6,7 @@ import FormAddress from "../../components/Forms/FormAddress";
 import StepperMobile from "../../components/StepperMobile/StepperMobile";
 import StepperDesktop from "../../components/StepperDesktop/StepperDesktop";
 import LayoutPage from "../../utils/LayoutPage";
+import { Stack } from "@mui/material";
 
 const steps = [
   { label: "Information", content: <FormBasicInformation /> },
@@ -29,37 +30,39 @@ function PageRegister() {
   };
 
   return (
-    <LayoutPage fullHeight>
-      <Box
-        sx={{
-          display: { xs: "block", md: "none" },
-          width: "70vh",
-          margin: "auto",
-        }}
-      >
-        <StepperMobile
-          steps={steps}
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handleBack={handleBack}
-          handleReset={handleReset}
-        />
-      </Box>
-      <Box
-        sx={{
-          display: { xs: "none", md: "block" },
-          width: "70vh",
-          margin: "auto",
-        }}
-      >
-        <StepperDesktop
-          steps={steps}
-          activeStep={activeStep}
-          handleNext={handleNext}
-          handleBack={handleBack}
-          handleReset={handleReset}
-        />
-      </Box>
+    <LayoutPage fullHeight withoutLabels>
+      <Stack width={1} height={1} >
+        <Box
+          sx={{
+            display: { xs: "block", md: "none" },
+            width: "70vh",
+            margin: "auto",
+          }}
+        >
+          <StepperMobile
+            steps={steps}
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
+            handleReset={handleReset}
+          />
+        </Box>
+        <Box
+          sx={{
+            display: { xs: "none", md: "block" },
+            width: "70vh",
+            margin: "auto",
+          }}
+        >
+          <StepperDesktop
+            steps={steps}
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
+            handleReset={handleReset}
+          />
+        </Box>
+      </Stack>
     </LayoutPage>
   );
 }

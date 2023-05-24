@@ -5,8 +5,15 @@ import PagePost from "./pages/PagePost/PagePost";
 import PageTransaction from "./pages/PageTransaction/PageTransaction";
 import PageLogin from "./pages/PageLogin/PageLogin";
 import PageRegister from "./pages/PageRegister/PageRegister";
+import { useDispatch } from "react-redux";
+import { setLogin } from "./reducer/userSlice";
 
-function App() {
+function App({user}) {
+  const dispatch = useDispatch();
+  if(user.isValidToken){
+    dispatch(setLogin(user));
+  }
+
   return (
     <>
       <BrowserRouter>

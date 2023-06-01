@@ -35,7 +35,6 @@ function PageRegister() {
         <Box
           sx={{
             display: { xs: "block", md: "none" },
-            width: "70vh",
             margin: "auto",
           }}
         >

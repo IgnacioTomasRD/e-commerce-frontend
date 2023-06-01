@@ -21,27 +21,30 @@ import { logout } from "../../api";
 import { setLogout } from "../../reducer/userSlice";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { setOpen } from "../../reducer/shoppingCartSlice";
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
 const Header = forwardRef((props, ref) => {
   const [openNavBarMobile, setOpenNavBarMobile] = useState(false);
   const user = useSelector((state) => state.user);
-  const shoppingCart = useSelector(state => state.shoppingCart)
+  const shoppingCart = useSelector((state) => state.shoppingCart);
   const navigateTo = useNavigateToTop();
   const dispatch = useDispatch();
 
   const labelAccount = {
     title: "My account",
-    icon: () => <ManageAccountsIcon sx={{ color: "#e9ebff", fontSize: 30 }} />,
+    icon: (color = "#e9ebff") => (
+      <ManageAccountsIcon sx={{ color, fontSize: 30 }} />
+    ),
     onClick: () => navigateTo("#"),
   };
   const labelLogIn = {
     title: "Login",
     onClick: () => navigateTo("/login"),
-    icon: () => <LoginIcon sx={{ color: "#e9ebff", fontSize: 30 }} />,
+    icon: (color = "#e9ebff") => <LoginIcon sx={{ color, fontSize: 30 }} />,
   };
   const labelLogOut = {
     title: "Log out",
-    icon: () => <LogoutIcon sx={{ color: "#e9ebff", fontSize: 30 }} />,
+    icon: (color = "#e9ebff") => <LogoutIcon sx={{ color, fontSize: 30 }} />,
     onClick: async () => {
       await logout();
       dispatch(setLogout());
@@ -50,7 +53,7 @@ const Header = forwardRef((props, ref) => {
   const labelSignUp = {
     title: "Sign Up",
     onClick: () => navigateTo("/register"),
-    icon: () => <HowToRegIcon sx={{ color: "#e9ebff", fontSize: 30 }} />,
+    icon: (color = "#e9ebff") => <HowToRegIcon sx={{ color, fontSize: 30 }} />,
   };
 
   const openNavBar = () => {
@@ -72,7 +75,7 @@ const Header = forwardRef((props, ref) => {
           backgroundColor: "#0057FF",
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" disableGutters>
           <Toolbar disableGutters>
             <Box
               sx={{
@@ -107,35 +110,55 @@ const Header = forwardRef((props, ref) => {
                 </Button>
               ))}
             </Box>
-            {props.shoppingCart && <Button
-              sx={{
-                display:{xs:'none',md:'flex'},
-                mr: 5,
-                width: "250px",
-                borderRadius: "5px",
-                border: "1px solid white",
-              }}
-              onClick={() => dispatch(setOpen(!shoppingCart.isOpen))}
-              endIcon={<ShoppingCartCheckoutIcon sx={{color:'white'}}/>}
-            >
-              <Typography
-                variant="h5"
-                textAlign={"start"}
+            {props.shoppingCart && (
+              <Button
                 sx={{
-                  width: "210px",
-                  padding: 1,
-                  color: "primary.contrastText",
+                  display: { xs: "none", md: "flex" },
+                  mr: 5,
+                  width: "250px",
+                  borderRadius: "5px",
+                  border: "1px solid white",
                 }}
+                onClick={() => dispatch(setOpen(!shoppingCart.isOpen))}
+                endIcon={<ShoppingCartCheckoutIcon sx={{ color: "white" }} />}
               >
-                Shopping Cart
-              </Typography>
-            </Button>}
+                <Typography
+                  variant="h5"
+                  textAlign={"start"}
+                  sx={{
+                    width: "210px",
+                    padding: 1,
+                    color: "primary.contrastText",
+                  }}
+                >
+                  Shopping Cart
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "white",
+                    backgroundColor: "#0040e6",
+                    padding: 1,
+                    borderRadius: "50%",
+                    width: "25px",
+                    height: "25px",
+                    fontSize: "0.75rem",
+                  }}
+                >
+                  {shoppingCart.items.length}
+                </Typography>
+              </Button>
+            )}
             <Box sx={{ display: { sm: "flex", md: "none", flexGrow: 1 } }}>
-              <NavBarMobile
-                openNavBarMobile={openNavBarMobile}
-                setOpenNavBarMobile={setOpenNavBarMobile}
-              />
-              <button onClick={openNavBar} className={"icon-menu"} />
+              { !props.withoutLabels > 0 && (
+                <>
+                  <NavBarMobile
+                    openNavBarMobile={openNavBarMobile}
+                    setOpenNavBarMobile={setOpenNavBarMobile}
+                    navLinksMobile={labels}
+                  />
+                  <MenuOpenIcon sx={{fontSize:'50px'}} onClick={openNavBar}/>
+                </>
+              )}
             </Box>
             <LinkToTop to="/">
               <button className="logo-motor-fortune"></button>

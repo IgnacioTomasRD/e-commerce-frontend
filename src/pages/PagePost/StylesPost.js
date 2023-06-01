@@ -13,19 +13,6 @@ const styleNameProduct = {
   fontSize: "2rem",
 };
 
-const styleButtonBack = {
-  width: "40px",
-  height: "40px",
-  backgroundColor: "#0057FF",
-  borderRadius: "50%",
-  marginTop: 1.5,
-  minWidth: 0,
-  "&:hover": {
-    backgroundColor: "#0057FF",
-  },
-  alignSelf: "start",
-};
-
 const styleButtonShoppingCart = {
   width: "60%",
   minHeight: '62px',
@@ -34,4 +21,4 @@ const styleButtonShoppingCart = {
   borderColor: "#0057FF",
 };
 
-export { styleContainer, styleNameProduct, styleButtonBack,styleButtonShoppingCart };
+export { styleContainer, styleNameProduct, styleButtonShoppingCart };

@@ -27,11 +27,12 @@
 } 
 
 .container-footer--info__logo_MF{
-    width: 170px;
+    width: 155px;
     height: 100%;
     background-image: url('/src/assets/logos/logo-mf.svg');
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: -1%;
 } 
 .container-footer--info__visit-us{
     width: 50%;

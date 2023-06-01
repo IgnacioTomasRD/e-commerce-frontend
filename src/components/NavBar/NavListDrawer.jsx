@@ -4,23 +4,7 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import InfoIcon from '@mui/icons-material/Info';
 import React from "react";
 
-function NavListDrawer(){
-    const navLinksMobile = [
-        {
-            description: "My account",
-            path: "#account",
-            icon:  <ManageAccountsIcon/>
-        },
-        {
-            description: "Cars",
-            path: "#cars",
-            icon:  <DirectionsCarIcon/>
-        },{
-            description: "About us",
-            path: "#Home",
-            icon:  <InfoIcon />
-        }
-    ]
+function NavListDrawer({navLinksMobile}){
 
     return(
         <Box sx={{ width: '100%' ,bgcolor:'white'}}>
@@ -32,11 +16,11 @@ function NavListDrawer(){
                     return (
                         <React.Fragment key={`navLinkMobile-${index}`}>
                         <ListItem disablePadding>
-                            <ListItemButton component='a' href={nav.path}>
+                            <ListItemButton component='a' href={nav.path} onClick={nav.onClick}>
                                 <ListItemIcon   sx={{ minWidth: 30 }}>
-                                    {nav.icon}
+                                    {nav.icon('black')}
                                 </ListItemIcon>
-                                <ListItemText >{nav.description}</ListItemText>
+                                <ListItemText primaryTypographyProps={{sx: {fontSize:'1.5rem',ml:1}}} >{nav.title}</ListItemText>
                             </ListItemButton>
                         </ListItem>
                         <Divider />

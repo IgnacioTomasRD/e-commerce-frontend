@@ -1,49 +1,25 @@
 import { Button, Container, Divider, Stack, Typography } from "@mui/material";
 import ProductPost from "../../components/ProductPost/ProductPost";
 import LayoutPage from "../../utils/LayoutPage";
+import { styleContainerPosts } from "./StylesTransaction";
+import { useSelector } from "react-redux";
 
 function PageTransaction() {
+  const items = useSelector((state) => state.shoppingCart).items;
+
+  console.log(
+    "🚀 ~ file: PageTransaction.jsx:9 ~ PageTransaction ~ items:",
+    items
+  );
+
   return (
     <LayoutPage fullHeight>
-      <Container sx={{ maxWidth: "788px !important"}}>
+      <Container sx={{ maxWidth: "788px !important" }}>
         <Typography marginTop={4} marginBottom={1} variant="h2">
           {" "}
           Your Products
         </Typography>
-        <Container
-          sx={{
-            height: "40vh",
-            overflow: "scroll",
-            overflowX: "hidden",
-            padding:'0px !important',
-            "&::-webkit-scrollbar": {
-              "-webkit-appearance": "none",
-              widht:'4px'
-            },
-            "&::-webkit-scrollbar-thumb": {
-              background: "#ccc",
-              borderRadius: "4px",
-            },
-            "&::-webkit-scrollbar-thumb:hover": {
-              backgroundColor: " #b3b3b3",
-              boxShadow: "0 0 2px 1px rgba(0, 0, 0, 0.2)",
-            },
-            "&::-webkit-scrollbar-thumb:active": {
-              backgroundColor: "#999999",
-            },
-            "&::-webkit-scrollbar-track": {
-              backgroundColor: "#e1e1e1",
-              borderRadius: "2px",
-            },
-            "&::-webkit-scrollbar-track:hover":
-              {
-                background: "#d4d4d4",
-              },
-              "&:-webkit-scrollbar-track:active": {
-                background: "#d4d4d4"
-              }
-          }}
-        >
+        <Container sx={styleContainerPosts}>
           <Container
             sx={{
               display: "flex",
@@ -51,40 +27,28 @@ function PageTransaction() {
               gap: "20px",
             }}
           >
-            <ProductPost
-              name="BMW"
-              units="3"
-              price="$10000"
-            ></ProductPost>
-            <ProductPost
-              name="BMW"
-              units="3"
-              price="$10000"
-            ></ProductPost>
-            <ProductPost
-              name="BMW"
-              units="3"
-              price="$10000"
-            ></ProductPost>
-            <ProductPost
-              name="BMW"
-              units="3"
-              price="$10000"
-            ></ProductPost>
-            <ProductPost
-              name="BMW"
-              units="3"
-              price="$10000"
-            ></ProductPost>
-            <ProductPost
-              name="BMW"
-              units="3"
-              price="$10000"
-            ></ProductPost>
+            {items.map((item) => {
+              return (
+                <ProductPost
+                  name={item.post.name}
+                  units={item.units}
+                  price={item.post.price}
+                  img={item.post.product.imgs[0]}
+                />
+              );
+            })}
           </Container>
         </Container>
         <Divider sx={{ margin: 1 }} />
-        <Typography variant="h4">Total: $50000</Typography>
+        <Typography variant="h4">
+          Total:{" "}
+          {items
+            .map((item) => item.post.price * item.units)
+            .reduce(
+              (accumulator, currentValue) => accumulator + currentValue,
+              0
+            )}USD
+        </Typography>
         <Typography variant="h4">Transaction status: pending</Typography>
         <Stack direction={"row"} sx={{ marginTop: 2 }}>
           <Button

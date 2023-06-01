@@ -8,13 +8,11 @@ import {
 } from "@mui/material";
 import Slider from "../../components/SliderPost/SliderPost";
 import "./PagePost.css";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useEffect, useState } from "react";
 import LayoutPage from "../../utils/LayoutPage";
 import {
-  styleButtonBack,
   styleButtonShoppingCart,
   styleContainer,
   styleNameProduct,
@@ -27,6 +25,7 @@ import { fetchPost } from "../../api";
 import { addPost } from "../../reducer/shoppingCartSlice";
 import { blue } from "@mui/material/colors";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { ButtonBack } from "../../components/ButtonBack/ButtonBack";
 
 
 const postDefault = {
@@ -85,13 +84,12 @@ const ButtonBuyNow = () => (
 function PagePost() {
   const [units, setUnits] = useState(1);
   const [post, setPost] = useState(postDefault);
-  const navigate = useNavigate();
   const params = useParams();
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [checked, setChecked] = useState(false);
+
 
   useEffect(() => {
     const id = params.id;
@@ -129,17 +127,6 @@ function PagePost() {
       {" "}
       {post.product?.name}{" "}
     </Typography>
-  );
-  const ButtonBack = () => (
-    <Button
-      variant="contained"
-      onClick={() => navigate(-1)}
-      sx={styleButtonBack}
-    >
-      <ArrowBackIosIcon
-        sx={{ color: "white", fontSize: 40, paddingLeft: "11px" }}
-      />
-    </Button>
   );
 
   return (

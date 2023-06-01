@@ -4,11 +4,12 @@ import ProductPost from "../ProductPost/ProductPost";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpen } from "../../reducer/shoppingCartSlice";
+import { useNavigateToTop } from "../../hooks/useNavigateToTop";
 
 const ShoppingCart = () => {
   const isOpenShopCart = useSelector(state => state.shoppingCart).isOpen;
-  console.log("🚀 ~ file: ShoppingCart.jsx:9 ~ ShoppingCart ~ isOpenShopCart:", isOpenShopCart)
   const dispatch = useDispatch();
+  const navigateTo = useNavigateToTop();
   const items = useSelector((state) => state.shoppingCart).items;
 
   return (
@@ -66,6 +67,7 @@ const ShoppingCart = () => {
                   margin: "auto",
                   marginBottom: "15px",
                 }}
+                onClick={() => navigateTo('/transaction')}
               >
                 Buy
               </Button>

@@ -1,8 +1,4 @@
 import {
-  Box,
-  Button,
-  Container,
-  Drawer,
   Pagination,
   Stack,
 } from "@mui/material";
@@ -10,28 +6,34 @@ import Filter from "../../components/Filter/Filter";
 import ProductsListPost from "../../components/ProductsListPost/ProductsListPost";
 import Searcher from "../../components/Searcher/Seacher";
 import "./PagePosts.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LayoutPage from "../../utils/LayoutPage";
 import { fetchPosts } from "../../api";
 import { useDispatch, useSelector } from "react-redux";
-import { setPosts } from "../../reducer/postsSlice";
 import ShoppingCart from "../../components/ShoppingCart/ShoppingCart";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import { useMediaQuery,useWindowScroll } from "@uidotdev/usehooks";
 
 function PagePosts() {
   const dispatch = useDispatch();
-  const postsActive = useSelector((state) => state.posts);
+  const [page,setPage] = useState(1);
+  const [totalPages,setTotalPages] = useState(0);
+  const [posts,setPosts] = useState([])
   const isSmallDevice = useMediaQuery("only screen and (max-width : 600px)");
+  const [_, scrollTo] = useWindowScroll();
 
   useEffect(() => {
     const getPosts = async () => {
-      const posts = await fetchPosts();
-      dispatch(setPosts(posts));
+      const fetchedPosts = await fetchPosts(page);
+      setTotalPages(fetchedPosts.pages);
+      setPosts(fetchedPosts.posts);
     };
-    if (postsActive.length === 0) {
-      getPosts();
-    }
-  }, []);
+    getPosts();
+  }, [page]);
+
+  const changePage = (e,value) => {
+    setPage(value);
+    scrollTo({top: 0})
+  }
 
   return (
     <>
@@ -41,16 +43,18 @@ function PagePosts() {
           <Searcher />
           <Filter />
           <div className="separador" />
-          <ProductsListPost />
+          <ProductsListPost posts = {posts} />
           <Stack flexDirection={'row'} justifyContent={'center'} sx={{ mt: 3, mb: 3, width: 1 }}>
             <Pagination
+              page= {page}
+              onChange={changePage}
               size= {isSmallDevice ? "small":"large"}
               sx={{ 
                 '& .MuiPaginationItem-root':{
                   fontSize: '1.7rem'
                 }
               }}
-              count={10}
+              count={totalPages}
               color="primary"
             />
           </Stack>

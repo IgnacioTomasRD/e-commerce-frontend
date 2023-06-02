@@ -16,7 +16,6 @@ const userFetch = await fetch("http://localhost:3000/getUserByJWT", {
   credentials: "include",
 });
 const user = await userFetch.json();
-console.log("🚀 ~ file: main.jsx:19 ~ user:", user)
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

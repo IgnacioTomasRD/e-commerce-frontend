@@ -27,7 +27,6 @@ import { blue } from "@mui/material/colors";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { ButtonBack } from "../../components/ButtonBack/ButtonBack";
 
-
 const postDefault = {
   id: "",
   product: {
@@ -85,24 +84,17 @@ function PagePost() {
   const [units, setUnits] = useState(1);
   const [post, setPost] = useState(postDefault);
   const params = useParams();
-  const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-
   useEffect(() => {
     const id = params.id;
-    const postIndex = posts.findIndex((post) => post.id === id);
-    if (postIndex >= 0) {
-      setPost(posts[postIndex]);
-    } else {
-      const getPostById = async () => {
-        const post = await fetchPost(id);
-        setPost(post);
-      };
-      getPostById();
-    }
+    const getPostById = async () => {
+      const post = await fetchPost(id);
+      setPost(post);
+    };
+    getPostById();
   }, []);
 
   const plusUnit = () =>

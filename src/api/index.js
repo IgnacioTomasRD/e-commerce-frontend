@@ -1,8 +1,7 @@
-export const fetchPosts = async () => {
+export const fetchPosts = async (page) => {
   try {
-    const req = await fetch("http://localhost:3000/post", { method: "GET" });
+    const req = await fetch("http://localhost:3000/post?page=" + page , { method: "GET" });
     const data = await req.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

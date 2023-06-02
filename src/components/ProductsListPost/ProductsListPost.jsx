@@ -31,9 +31,8 @@ const post = {
 
 const postsr = [post,{...post,id:'2', product:{ ...post.product, imgs:["/src/assets/imgs/amggtr.jpg","/src/assets/imgs/mb.jpg"]}},{...post,id:'3', product:{ ...post.product, imgs:["/src/assets/imgs/amggt.jpg"]}}]
 
-function ProductsListPost() {
+function ProductsListPost({posts}) {
 
-  const posts = useSelector(state => state.posts)
   const navigateTo = useNavigateToTop();
 
   const selectedPost = (post) => () =>{

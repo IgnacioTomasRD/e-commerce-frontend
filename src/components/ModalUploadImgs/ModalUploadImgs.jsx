@@ -1,7 +1,6 @@
 import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
-import Dropzone, { useDropzone } from "react-dropzone";
-
+import { useDropzone } from "react-dropzone";
 const style = {
   position: "absolute",
   top: "50%",
@@ -12,23 +11,48 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+const readers = [];
 
-export const ModalUploadImgs = () => {
-  const [files, setFiles] = useState([]);
+export const ModalUploadImgs = ({
+  setOpen,
+  setFieldValue,
+  setFiles,
+  files,
+}) => {
+  const [filesPreview, setFilesPreview] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
     setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
   }, []);
-
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true,accept:'images/*' });
-
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { "image/*": [] },
+    multiple: true,
+    type: "file",
+  });
 
   useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks
-    console.log("🚀 ~ file: ModalUploadImgs.jsx:21 ~ onDrop ~ files:", files);
-    files.forEach((file) => URL.revokeObjectURL(file.preview));
+    for (let i = 0; i < files.length; i++) {
+      let reader = new FileReader();
+      reader.readAsDataURL(files[i]);
+      reader.onloadend = () => {
+        setFilesPreview((prevFiles) => [...prevFiles, reader.result]);
+      };
+      readers.push(reader)
+    }
+    return () => {
+      setFilesPreview([]);
+      filesPreview.forEach((file) => URL.revokeObjectURL(filesPreview.preview));
+      readers.forEach(r => r.abort())
+    };
   }, [files]);
+
+  useEffect(() =>{
+    return ()=>{
+      setFilesPreview([]);
+      filesPreview.forEach((file) => URL.revokeObjectURL(filesPreview.preview));
+    }
+  },[])
 
   return (
     <Box sx={style}>
@@ -37,9 +61,17 @@ export const ModalUploadImgs = () => {
       </Typography>
       <div
         {...getRootProps()}
-        className={`drop-zone ${isDragActive ? "active" : ""}`}
+        style={{
+          width: "100%",
+          height: "250px",
+          border: "1px solid black",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
       >
-        <input {...getInputProps()} />
+        <input {...getInputProps()} accept="image/*" type="file" />
         {isDragActive ? (
           <p>Suelta los archivos aquí...</p>
         ) : (
@@ -48,14 +80,37 @@ export const ModalUploadImgs = () => {
           </p>
         )}
       </div>
-      <Stack
-        flexDirection={"row-reverse"}
-        justifyContent={"space-between"}
-        marginTop={2}
-        padding={2}
-      >
-        <Button variant="contained">UPLOAD</Button>
-        <Button variant="outlined">CLOSE</Button>
+      <Box width={1} minHeight={"120px"} padding={"20px"}>
+        <Stack
+          width={1}
+          flexDirection={"row"}
+          gap={3}
+          flexWrap={"wrap"}
+          height={"auto"}
+        >
+          {filesPreview.map((filePreview, index) => (
+            <img
+              key={index}
+              src={filePreview}
+              style={{ width: "80px", height: "100px", objectFit: "cover" }}
+            />
+          ))}
+        </Stack>
+      </Box>
+      <Stack flexDirection={"row-reverse"} justifyContent={"space-between"}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setFilesPreview([]);
+            setFieldValue("imgs", files);
+            setOpen(false);
+          }}
+        >
+          UPLOAD
+        </Button>
+        <Button variant="outlined" onClick={() => setOpen(false)}>
+          CLOSE
+        </Button>
       </Stack>
     </Box>
   );

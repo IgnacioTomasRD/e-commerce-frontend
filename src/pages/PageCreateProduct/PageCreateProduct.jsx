@@ -1,48 +1,30 @@
 import React, { useState } from "react";
 import LayoutPage from "../../utils/LayoutPage";
-import { Box, Button, Modal } from "@mui/material";
+import { Box, Button, Modal, Paper, Stack, Typography } from "@mui/material";
 import { ModalUploadImgs } from "../../components/ModalUploadImgs/ModalUploadImgs";
+import { FormProduct } from "../../components/Forms/FormProduct";
 
 export const PageCreateProduct = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [open, setOpen] = useState(true);
-
-  const handleImageChange = (event) => {
-    setSelectedImage(event.target.files[0]);
-  };
-
-  const handleUpload = () => {
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-
-    fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   return (
-    <LayoutPage fullHeight>
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ margin: 10 }}
-        onClick={() => setOpen(true)}
-      >
-        UPLOAD IMAGES
-      </Button>
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <Box>
-          <ModalUploadImgs />
-        </Box>
-      </Modal>
+    <LayoutPage withoutLabels>
+      <Stack width={1} height={1} justifyContent={'center'}>
+        <Paper
+          elevation={6}
+          sx={{
+            padding: 3,
+            width: 0.5,
+            minWidth: '300px',
+            margin: "auto",
+            marginTop: "10px",
+            marginBottom: "10px",
+            height: 'auto'
+          }}
+        >
+          <Typography sx={{fontSize: '2.4rem'}}>Create new product</Typography>
+          <FormProduct />
+        </Paper>
+      </Stack>
     </LayoutPage>
   );
 };

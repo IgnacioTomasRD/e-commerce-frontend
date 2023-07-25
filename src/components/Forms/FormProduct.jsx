@@ -42,11 +42,10 @@ export const FormProduct = () => {
   const onSubmit = async (values, {setSubmitting}) => {
     setSubmitting(false);
     const urlsImgs = await uploadFiles(files);
-    console.log("🚀 ~ file: FormProducsaasddst.jsx:41 ~ onSubmit ~ urlsImgs:", urlsImgs)
     const product = {
       name: values.nameProduct,
       description: values.description,
-      characteristics: [values.km,values.year,values.color],
+      characteristics: [{name: 'km', value: values.km},{name: 'year' , value: values.year},{name: 'color', value: values.color}],
       imgs: urlsImgs,
       categories: [values.category]
     }
@@ -179,7 +178,7 @@ export const FormProduct = () => {
               >
                 {categories.map((category, idx) => {
                   return (
-                    <MenuItem key={idx} value={category._id} name={category} sx={{fontSize:'16px'}}>
+                    <MenuItem key={idx} value={category.name} name={category} sx={{fontSize:'16px'}}>
                       {`${category.name}`}
                     </MenuItem>
                   );

@@ -8,6 +8,7 @@ import PageRegister from "./pages/PageRegister/PageRegister";
 import { useDispatch } from "react-redux";
 import { setLogin } from "./reducer/userSlice";
 import { PageCreateProduct } from "./pages/PageCreateProduct/PageCreateProduct";
+import PageCreatePost from './pages/PageCreatePost/PageCreatePost';
 
 function App({user}) {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App({user}) {
             </Route>
             <Route path="admin/">
               <Route path = 'create-product' element={<PageCreateProduct/>}/>
+              <Route path = 'create-post' element={<PageCreatePost/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

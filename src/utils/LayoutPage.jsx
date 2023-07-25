@@ -21,7 +21,7 @@ function LayoutPage({ children, fullHeight, headerHiddenOnScroll, position ,with
       ) : (
         <Header position="static" withoutLabels = {withoutLabels} shoppingCart = {shoppingCart} />
       )}
-      <Box sx = {{minHeight:'calc(100vh - 272px)',width: 1}}>{children}</Box>{" "}
+      <Box sx = {{minHeight:'calc(100vh - 272px)',width: 1, position: 'relative'}}>{children}</Box>{" "}
       {fullHeight ? (
         <Stack width={1} alignSelf={"end"}>
           <Footer />

@@ -89,3 +89,17 @@ export const uploadNewProduct = async (product) => {
     console.log(error.message);
   }
 };
+
+export const fetchProducts = async () => {
+  try {
+    const res = await axios.get("http://localhost:3000/product", {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      withCredentials: true
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
